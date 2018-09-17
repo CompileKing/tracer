@@ -22,7 +22,50 @@ public:
 
 	//this is a float that will be set by Resolume, and we can use it to change stuff in our plugin
 	//we're going to link the value of this float to the value of the slider in Resolume
-	float aFloat;
+	float a01;
+    float a02;
+    float a03;
+    float a04;
+    float a05;
+    float a06;
+    float a07;
+    float a08;
+    float a09;
+    float a10;
+    float a11;
+    float a12;
+    float a13;
+    float a14;
+    float a15;
+    float a16;
+    float a17;
+    float a18;
+    float a19;
+    float a20;
+    float a21;
+    float a22;
+    float a23;
+    float a24;
+    float a25;
+    float a26;
+    float a27;
+    float a28;
+    float a29;
+    float a30;
+    float a31;
+    float a32;
+    float a33;
+    float a34;
+    float a35;
+    float a36;
+    float a37;
+    float a38;
+    float a39;
+    float a40;
+    float a41;
+    float a42;
+    float a43;
+    float a44;
 
 	//this is boiler plate code that takes care of all the behind the scenes stuff used in creating a plugin
 	//in other words, we don't want to mess with this
