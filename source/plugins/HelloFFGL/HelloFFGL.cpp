@@ -1,30 +1,28 @@
 #include "HelloFFGL.h"
 
+#define LayerDial1   0
+#define LayerDial2   1
+#define LayerDial3   2
+#define LayerDial4   3
+#define LayerDial5   4
+#define LayerDial6   5
+#define LayerDial7   6
+#define LayerDial8   7
 
+#define GroupModeA   8
+#define GroupModeB   9
+#define GroupModeC   10
 
-#define LayerDial1 0
-#define LayerDial2 1
-#define LayerDial3 2
-#define LayerDial4 3
-#define LayerDial5 4
-#define LayerDial6 5
-#define LayerDial7 6
-#define LayerDial8 7
+#define MultiDial    11
 
-#define GroupModeA 8
-#define GroupModeB 9
-#define GroupModeC 10
-
-#define MultiDial 11
-
-#define BypassDial1 12
-#define BypassDial2 13
-#define BypassDial3 14
-#define BypassDial4 15
-#define BypassDial5 16
-#define BypassDial6 17
-#define BypassDial7 18
-#define BypassDial8 19
+#define BypassDial1  12
+#define BypassDial2  13
+#define BypassDial3  14
+#define BypassDial4  15
+#define BypassDial5  16
+#define BypassDial6  17
+#define BypassDial7  18
+#define BypassDial8  19
 
 #define  GroupSelect1A 20
 #define  GroupSelect1B 21
@@ -148,8 +146,6 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( GroupSelect8A, "GroupSelect8A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect8B, "GroupSelect8B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect8C, "GroupSelect8C", FF_TYPE_BOOLEAN, 0.f); // groupSelect, group selection per layer
-    
-    
     
     
 	SetMinInputs( 1 );
