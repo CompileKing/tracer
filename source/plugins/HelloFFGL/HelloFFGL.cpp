@@ -96,7 +96,7 @@ FFGLPlugin::FFGLPlugin()
     
     SetParamInfo( GroupModeA, "GroupModeA", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupModeB, "GroupModeB", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupModeC, "GroupModeC", FF_TYPE_BOOLEAN, 0.f);  // groupmode
+    SetParamInfo( GroupModeC, "GroupModeC", FF_TYPE_EVENT, 0.f);  // groupmode
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     
