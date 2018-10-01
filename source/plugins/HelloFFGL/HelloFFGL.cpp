@@ -66,7 +66,7 @@
 static CFFGLPluginInfo PluginInfo(
 	FFGLPlugin::CreateInstance,			// Create method
 	"0195",								// Plugin unique ID
-	"AKAI CONTROLLER",					// Plugin name
+	"AKAI1",				        	// Plugin name
 	1,						   			// API major version number												
 	500,								// API minor version number
 	1,									// Plugin major version number
