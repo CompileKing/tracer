@@ -66,6 +66,18 @@ public:
     float a42;
     float a43;
     float a44;
+	float a45;
+	float a46;
+	float a47;
+	float a48;
+	float a49;
+	float a50;
+	float a51;
+	float a52;
+	float a53
+	float a54;
+	float a55;
+	float a56;
 
 	//this is boiler plate code that takes care of all the behind the scenes stuff used in creating a plugin
 	//in other words, we don't want to mess with this
