@@ -74,7 +74,7 @@ public:
 	float a50;
 	float a51;
 	float a52;
-	float a53
+    float a53;
 	float a54;
 	float a55;
 	float a56;

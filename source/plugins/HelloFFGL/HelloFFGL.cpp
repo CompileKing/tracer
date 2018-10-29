@@ -56,6 +56,17 @@
 #define  GroupSelect8B 42
 #define  GroupSelect8C 43
 
+#define  LayerSelect1 44
+#define  LayerSelect2 45
+#define  LayerSelect3 46
+#define  LayerSelect4 47
+#define  LayerSelect5 48
+#define  LayerSelect6 49
+#define  LayerSelect7 50
+#define  LayerSelect8 51
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,6 +157,15 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( GroupSelect8A, "GroupSelect8A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect8B, "GroupSelect8B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect8C, "GroupSelect8C", FF_TYPE_BOOLEAN, 0.f); // groupSelect, group selection per layer
+    
+    SetParamInfo( LayerSelect1, "LayerSelect1", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect2, "LayerSelect2", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect3, "LayerSelect3", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect4, "LayerSelect4", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect5, "LayerSelect5", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect6, "LayerSelect6", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect7, "LayerSelect7", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_EVENT, 0.f);
     
     
 	SetMinInputs( 1 );
@@ -323,6 +343,33 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a44 = value;
             break;
             
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+        case LayerSelect1:
+            a45 = value;
+            break;
+        case LayerSelect2:
+            a46 = value;
+            break;
+        case LayerSelect3:
+            a47 = value;
+            break;
+        case LayerSelect4:
+            a48 = value;
+            break;
+        case LayerSelect5:
+            a49 = value;
+            break;
+        case LayerSelect6:
+            a50 = value;
+            break;
+        case LayerSelect7:
+            a51 = value;
+            break;
+        case LayerSelect8:
+            a52 = value;
+            break;
+            
             
 	}
 
@@ -486,6 +533,35 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect8C:
             return a44 ;
             break;
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+        
+        case LayerSelect1:
+            return a45 ;
+            break;
+        case LayerSelect2:
+            return a46 ;
+            break;
+        case LayerSelect3:
+            return a47 ;
+            break;
+        case LayerSelect4:
+            return a48 ;
+            break;
+        case LayerSelect5:
+            return a49 ;
+            break;
+        case LayerSelect6:
+            return a50 ;
+            break;
+        case LayerSelect7:
+            return a51 ;
+            break;
+        case LayerSelect8:
+            return a52 ;
+            break;
+            
             
             
 	}
