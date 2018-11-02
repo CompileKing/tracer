@@ -65,6 +65,15 @@
 #define  LayerSelect7 50
 #define  LayerSelect8 51
 
+#define  OpacityFader1 52
+#define  OpacityFader2 53
+#define  OpacityFader3 54
+#define  OpacityFader4 55
+#define  OpacityFader5 56
+#define  OpacityFader6 57
+#define  OpacityFader7 58
+#define  OpacityFader8 59
+
 
 
 
@@ -78,7 +87,7 @@ static CFFGLPluginInfo PluginInfo(
 	FFGLPlugin::CreateInstance,			// Create method
 	"0195",								// Plugin unique ID
 	"AKAI1",				        	// Plugin name
-	1,						   			// API major version number												
+	1,						   			// API major version number
 	500,								// API minor version number
 	1,									// Plugin major version number
 	000,								// Plugin minor version number
@@ -92,8 +101,8 @@ static CFFGLPluginInfo PluginInfo(
 FFGLPlugin::FFGLPlugin()
 	: CFreeFrameGLPlugin()
 {
-	
-	SetParamInfo( LayerDial1, "LayerDial1", FF_TYPE_STANDARD, 0.f);
+
+    SetParamInfo( LayerDial1, "LayerDial1", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( LayerDial2, "LayerDial2", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( LayerDial3, "LayerDial3", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( LayerDial4, "LayerDial4", FF_TYPE_STANDARD, 0.f);
@@ -102,19 +111,19 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( LayerDial7, "LayerDial7", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( LayerDial8, "LayerDial8", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( LayerDial8, "LayerDial8", FF_TYPE_STANDARD, 0.f); // layer dials, FX dial for each layer
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     SetParamInfo( GroupModeA, "GroupModeA", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupModeB, "GroupModeB", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupModeC, "GroupModeC", FF_TYPE_EVENT, 0.f);  // groupmode
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     SetParamInfo( MultiDial, "MultiDial", FF_TYPE_STANDARD, 0.f);   // multi dial, LIB dial for macro's
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     SetParamInfo( BypassDial1, "BypassDial1", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( BypassDial2, "BypassDial2", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( BypassDial3, "BypassDial3", FF_TYPE_BOOLEAN, 0.f);
@@ -123,41 +132,43 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( BypassDial6, "BypassDial6", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( BypassDial7, "BypassDial7", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( BypassDial8, "BypassDial8", FF_TYPE_BOOLEAN, 0.f); // bypass dials, for each layer
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     SetParamInfo( GroupSelect1A, "GroupSelect1A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect1B, "GroupSelect1B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect1C, "GroupSelect1C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect2A, "GroupSelect2A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect2B, "GroupSelect2B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect2C, "GroupSelect2C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect3A, "GroupSelect1A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect3B, "GroupSelect2B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect3C, "GroupSelect3C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect4A, "GroupSelect4A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect4B, "GroupSelect4B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect4C, "GroupSelect4C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect5A, "GroupSelect5A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect5B, "GroupSelect5B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect5C, "GroupSelect5C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect6A, "GroupSelect6A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect6B, "GroupSelect6B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect6C, "GroupSelect6C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect7A, "GroupSelect7A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect7B, "GroupSelect7B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect7C, "GroupSelect7C", FF_TYPE_BOOLEAN, 0.f);
-    
+
     SetParamInfo( GroupSelect8A, "GroupSelect8A", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect8B, "GroupSelect8B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect8C, "GroupSelect8C", FF_TYPE_BOOLEAN, 0.f); // groupSelect, group selection per layer
-    
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
     SetParamInfo( LayerSelect1, "LayerSelect1", FF_TYPE_EVENT, 0.f);
     SetParamInfo( LayerSelect2, "LayerSelect2", FF_TYPE_EVENT, 0.f);
     SetParamInfo( LayerSelect3, "LayerSelect3", FF_TYPE_EVENT, 0.f);
@@ -166,8 +177,19 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( LayerSelect6, "LayerSelect6", FF_TYPE_EVENT, 0.f);
     SetParamInfo( LayerSelect7, "LayerSelect7", FF_TYPE_EVENT, 0.f);
     SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_EVENT, 0.f);
-    
-    
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    SetParamInfo( OpacityFader1, "OpacityFader1", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader2, "OpacityFader2", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader3, "OpacityFader3", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader4, "OpacityFader4", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader5, "OpacityFader5", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader6, "OpacityFader6", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader7, "OpacityFader7", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader8, "OpacityFader8", FF_TYPE_STANDARD, 0.f);
+
+
 	SetMinInputs( 1 );
 	SetMaxInputs( 1 );
 }
@@ -182,7 +204,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
 
     return FF_SUCCESS;
-    
+
 }
 
 /* SetFloatParameter is called by Resolume when you change a slider in the effect */
@@ -207,7 +229,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a05 = value;
             break;
         case LayerDial6:
-            a06 = value; 
+            a06 = value;
             break;
         case LayerDial7:
             a07 = value;
@@ -215,9 +237,9 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case LayerDial8:
             a08 = value;
             break;
-            
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
         case GroupModeA:
             a09 = value;
             break;
@@ -227,15 +249,15 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupModeC:
             a11 = value;
             break;
-            
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
         case MultiDial:
             a12 = value;
             break;
-            
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
         case BypassDial1:
             a13 = value;
             break;
@@ -260,9 +282,9 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case BypassDial8:
             a20 = value;
             break;
-            
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
         case GroupSelect1A:
             a21 = value;
             break;
@@ -272,7 +294,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect1C:
             a23 = value;
             break;
-            
+
         case GroupSelect2A:
             a24 = value;
             break;
@@ -282,7 +304,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect2C:
             a26 = value;
             break;
-            
+
         case GroupSelect3A:
             a27 = value;
             break;
@@ -292,7 +314,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect3C:
             a29 = value;
             break;
-            
+
         case GroupSelect4A:
             a30 = value;
             break;
@@ -302,7 +324,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect4C:
             a32 = value;
             break;
-            
+
         case GroupSelect5A:
             a33 = value;
             break;
@@ -312,7 +334,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect5C:
             a35 = value;
             break;
-            
+
         case GroupSelect6A:
             a36 = value;
             break;
@@ -322,7 +344,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect6C:
             a38 = value;
             break;
-            
+
         case GroupSelect7A:
             a39 = value;
             break;
@@ -332,7 +354,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect7C:
             a41 = value;
             break;
-            
+
         case GroupSelect8A:
             a42 = value;
             break;
@@ -342,9 +364,9 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case GroupSelect8C:
             a44 = value;
             break;
-            
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
         case LayerSelect1:
             a45 = value;
             break;
@@ -369,7 +391,33 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case LayerSelect8:
             a52 = value;
             break;
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
             
+        case OpacityFader1:
+            a53 = value;
+            break;
+        case OpacityFader2:
+            a54 = value;
+            break;
+        case OpacityFader3:
+            a55 = value;
+            break;
+        case OpacityFader4:
+            a56 = value;
+            break;
+        case OpacityFader5:
+            a57 = value;
+            break;
+        case OpacityFader6:
+            a58 = value;
+            break;
+        case OpacityFader7:
+            a59 = value;
+            break;
+        case OpacityFader8:
+            a60 = value;
+            break;
             
 	}
 
@@ -453,7 +501,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             break;
             
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
         case GroupSelect1A:
             return a21 ;
             break;
@@ -463,7 +511,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect1C:
             return a23 ;
             break;
-            
+
         case GroupSelect2A:
             return a24 ;
             break;
@@ -473,7 +521,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect2C:
             return a26 ;
             break;
-            
+
         case GroupSelect3A:
             return a27 ;
             break;
@@ -483,7 +531,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect3C:
             return a29 ;
             break;
-            
+
         case GroupSelect4A:
             return a30 ;
             break;
@@ -493,7 +541,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect4C:
             return a32 ;
             break;
-            
+
         case GroupSelect5A:
             return a33 ;
             break;
@@ -503,7 +551,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect5C:
             return a35 ;
             break;
-            
+
         case GroupSelect6A:
             return a36 ;
             break;
@@ -513,7 +561,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect6C:
             return a38 ;
             break;
-            
+
         case GroupSelect7A:
             return a39 ;
             break;
@@ -523,7 +571,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect7C:
             return a41 ;
             break;
-            
+
         case GroupSelect8A:
             return a42 ;
             break;
@@ -533,10 +581,9 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
         case GroupSelect8C:
             return a44 ;
             break;
-            
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
-            
-        
+
         case LayerSelect1:
             return a45 ;
             break;
@@ -562,11 +609,32 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             return a52 ;
             break;
             
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
             
+        case OpacityFader1:
+            return a53 ;
+            break;
+        case OpacityFader2:
+            return a54 ;
+            break;
+        case OpacityFader3:
+            return a55 ;
+            break;
+        case OpacityFader4:
+            return a56 ;
+            break;
+        case OpacityFader5:
+            return a57 ;
+            break;
+        case OpacityFader6:
+            return a58 ;
+            break;
+        case OpacityFader7:
+            return a59 ;
+            break;
+        case OpacityFader8:
+            return a60 ;
+            break;
             
 	}
-
-	
 }
-
-

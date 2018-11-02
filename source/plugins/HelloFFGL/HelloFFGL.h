@@ -18,7 +18,7 @@ public:
 	FFResult ProcessOpenGL(ProcessOpenGLStruct* pGL) override;
 	FFResult SetFloatParameter(unsigned int index, float value) override;
 	float GetFloatParameter( unsigned int index ) override;
-	
+
 
 	//this is a float that will be set by Resolume, and we can use it to change stuff in our plugin
 	//we're going to link the value of this float to the value of the slider in Resolume
@@ -66,18 +66,27 @@ public:
     float a42;
     float a43;
     float a44;
-	float a45;
-	float a46;
-	float a47;
-	float a48;
-	float a49;
-	float a50;
-	float a51;
-	float a52;
+    float a45;
+    float a46;
+    float a47;
+    float a48;
+    float a49;
+    float a50;
+    float a51;
+    float a52;
     float a53;
-	float a54;
-	float a55;
-	float a56;
+    float a54;
+    float a55;
+    float a56;
+    float a57;
+    float a58;
+    float a59;
+    float a60;
+    float a61;
+    float a62;
+    float a63;
+    float a64;
+
 
 	//this is boiler plate code that takes care of all the behind the scenes stuff used in creating a plugin
 	//in other words, we don't want to mess with this
