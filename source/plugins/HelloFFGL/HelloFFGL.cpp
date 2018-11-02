@@ -75,9 +75,6 @@
 #define  OpacityFader8 59
 
 
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Plugin information
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,9 +89,8 @@ static CFFGLPluginInfo PluginInfo(
 	1,									// Plugin major version number
 	000,								// Plugin minor version number
 	FF_EFFECT,							// Plugin type
-	"AKAI CONTROLLER",		    	    // Plugin description
+	"AKAI1 CONTROLLER",		    	    // Plugin description
 	"Sem Schreuder // PixelClone"		// About
-
 
 );
 
@@ -176,7 +172,7 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( LayerSelect5, "LayerSelect5", FF_TYPE_EVENT, 0.f);
     SetParamInfo( LayerSelect6, "LayerSelect6", FF_TYPE_EVENT, 0.f);
     SetParamInfo( LayerSelect7, "LayerSelect7", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_EVENT, 0.f); // layer selection
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -187,7 +183,7 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( OpacityFader5, "OpacityFader5", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( OpacityFader6, "OpacityFader6", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( OpacityFader7, "OpacityFader7", FF_TYPE_STANDARD, 0.f);
-    SetParamInfo( OpacityFader8, "OpacityFader8", FF_TYPE_STANDARD, 0.f);
+    SetParamInfo( OpacityFader8, "OpacityFader8", FF_TYPE_STANDARD, 0.f); // opacity faders
 
 
 	SetMinInputs( 1 );
@@ -213,6 +209,10 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
 	//now we use the callback to set our internal float variable, whenever the slider in Resolume is changed
 	switch (index)
 	{
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // layer dials, FX dial for each layer
+            
+            
         case LayerDial1:
             a01 = value; //this means we're setting our float to whatever value the first parameter has in Resolume
             break;
@@ -238,7 +238,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a08 = value;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // groupmode
 
         case GroupModeA:
             a09 = value;
@@ -250,13 +250,13 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a11 = value;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // multi dial, LIB dial for macro's
 
         case MultiDial:
             a12 = value;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // bypass dials, for each layer
 
         case BypassDial1:
             a13 = value;
@@ -283,7 +283,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a20 = value;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // groupSelect, group selection per layer
 
         case GroupSelect1A:
             a21 = value;
@@ -365,7 +365,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a44 = value;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // layer selection
 
         case LayerSelect1:
             a45 = value;
@@ -392,7 +392,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             a52 = value;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // opacity faders
             
         case OpacityFader1:
             a53 = value;
@@ -430,6 +430,9 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
 {
 	switch ( index )
 	{
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // layer dials, FX dial for each layer
+            
         case LayerDial1:
             return a01; //right now, we just want to return the value of our float
             break;
@@ -455,7 +458,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             return a08;
             break;
             
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // groupmode
             
         case GroupModeA:
             return a09 ;
@@ -467,13 +470,13 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             return a11 ;
             break;
             
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // multi dial, LIB dial for macro's
             
         case MultiDial:
             return a12 ;
             break;
             
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // bypass dials, for each layer
             
         case BypassDial1:
             return a13 ;
@@ -500,7 +503,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             return a20 ;
             break;
             
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // groupSelect, group selection per layer
 
         case GroupSelect1A:
             return a21 ;
@@ -582,7 +585,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             return a44 ;
             break;
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // layer selection
 
         case LayerSelect1:
             return a45 ;
@@ -609,7 +612,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             return a52 ;
             break;
             
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////    // opacity faders
             
         case OpacityFader1:
             return a53 ;
