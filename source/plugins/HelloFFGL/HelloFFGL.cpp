@@ -139,8 +139,8 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( GroupSelect2B, "GroupSelect2B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect2C, "GroupSelect2C", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect3A, "GroupSelect1A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect3B, "GroupSelect2B", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelect3A, "GroupSelect3A", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelect3B, "GroupSelect3B", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( GroupSelect3C, "GroupSelect3C", FF_TYPE_BOOLEAN, 0.f);
 
     SetParamInfo( GroupSelect4A, "GroupSelect4A", FF_TYPE_BOOLEAN, 0.f);
