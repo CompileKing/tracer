@@ -24,37 +24,37 @@
 #define BypassDial7  18
 #define BypassDial8  19
 
-#define  GroupSelect1A 20
-#define  GroupSelect1B 21
-#define  GroupSelect1C 22
+#define  GroupSelectA1 20
+#define  GroupSelectB1 21
+#define  GroupSelectC1 22
 
-#define  GroupSelect2A 23
-#define  GroupSelect2B 24
-#define  GroupSelect2C 25
+#define  GroupSelectA2 23
+#define  GroupSelectB2 24
+#define  GroupSelectC2 25
 
-#define  GroupSelect3A 26
-#define  GroupSelect3B 27
-#define  GroupSelect3C 28
+#define  GroupSelectA3 26
+#define  GroupSelectB3 27
+#define  GroupSelectC3 28
 
-#define  GroupSelect4A 29
-#define  GroupSelect4B 30
-#define  GroupSelect4C 31
+#define  GroupSelectA4 29
+#define  GroupSelectB4 30
+#define  GroupSelectC4 31
 
-#define  GroupSelect5A 32
-#define  GroupSelect5B 33
-#define  GroupSelect5C 34
+#define  GroupSelectA5 32
+#define  GroupSelectB5 33
+#define  GroupSelectC5 34
 
-#define  GroupSelect6A 35
-#define  GroupSelect6B 36
-#define  GroupSelect6C 37
+#define  GroupSelectA6 35
+#define  GroupSelectB6 36
+#define  GroupSelectC6 37
 
-#define  GroupSelect7A 38
-#define  GroupSelect7B 39
-#define  GroupSelect7C 40
+#define  GroupSelectA7 38
+#define  GroupSelectB7 39
+#define  GroupSelectC7 40
 
-#define  GroupSelect8A 41
-#define  GroupSelect8B 42
-#define  GroupSelect8C 43
+#define  GroupSelectA8 41
+#define  GroupSelectB8 42
+#define  GroupSelectC8 43
 
 #define  LayerSelect1 44
 #define  LayerSelect2 45
@@ -131,37 +131,37 @@ FFGLPlugin::FFGLPlugin()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    SetParamInfo( GroupSelect1A, "GroupSelect1A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect1B, "GroupSelect1B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect1C, "GroupSelect1C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA1, "GroupSelectA1", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB1, "GroupSelectB1", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC1, "GroupSelectC1", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect2A, "GroupSelect2A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect2B, "GroupSelect2B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect2C, "GroupSelect2C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA2, "GroupSelectA2", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB2, "GroupSelectB2", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC2, "GroupSelectC2", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect3A, "GroupSelect3A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect3B, "GroupSelect3B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect3C, "GroupSelect3C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA3, "GroupSelectA3", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB3, "GroupSelectB3", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC3, "GroupSelectC3", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect4A, "GroupSelect4A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect4B, "GroupSelect4B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect4C, "GroupSelect4C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA4, "GroupSelectA4", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB4, "GroupSelectB4", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC4, "GroupSelectC4", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect5A, "GroupSelect5A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect5B, "GroupSelect5B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect5C, "GroupSelect5C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA5, "GroupSelectA5", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB5, "GroupSelectB5", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC5, "GroupSelectC5", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect6A, "GroupSelect6A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect6B, "GroupSelect6B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect6C, "GroupSelect6C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA6, "GroupSelectA6", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB6, "GroupSelectB6", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC6, "GroupSelectC6", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect7A, "GroupSelect7A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect7B, "GroupSelect7B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect7C, "GroupSelect7C", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectA7, "GroupSelectA7", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB7, "GroupSelectB7", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC7, "GroupSelectC7", FF_TYPE_BOOLEAN, 0.f);
 
-    SetParamInfo( GroupSelect8A, "GroupSelect8A", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect8B, "GroupSelect8B", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo( GroupSelect8C, "GroupSelect8C", FF_TYPE_BOOLEAN, 0.f); // groupSelect, group selection per layer
+    SetParamInfo( GroupSelectA8, "GroupSelectA8", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectB8, "GroupSelectB8", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( GroupSelectC8, "GroupSelectC8", FF_TYPE_BOOLEAN, 0.f); // groupSelect, group selection per layer
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -285,83 +285,83 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////    // groupSelect, group selection per layer
 
-        case GroupSelect1A:
+        case GroupSelectA1:
             a21 = value;
             break;
-        case GroupSelect1B:
+        case GroupSelectB1:
             a22 = value;
             break;
-        case GroupSelect1C:
+        case GroupSelectC1:
             a23 = value;
             break;
 
-        case GroupSelect2A:
+        case GroupSelectA2:
             a24 = value;
             break;
-        case GroupSelect2B:
+        case GroupSelectB2:
             a25 = value;
             break;
-        case GroupSelect2C:
+        case GroupSelectC2:
             a26 = value;
             break;
 
-        case GroupSelect3A:
+        case GroupSelectA3:
             a27 = value;
             break;
-        case GroupSelect3B:
+        case GroupSelectB3:
             a28 = value;
             break;
-        case GroupSelect3C:
+        case GroupSelectC3:
             a29 = value;
             break;
 
-        case GroupSelect4A:
+        case GroupSelectA4:
             a30 = value;
             break;
-        case GroupSelect4B:
+        case GroupSelectB4:
             a31 = value;
             break;
-        case GroupSelect4C:
+        case GroupSelectC4:
             a32 = value;
             break;
 
-        case GroupSelect5A:
+        case GroupSelectA5:
             a33 = value;
             break;
-        case GroupSelect5B:
+        case GroupSelectB5:
             a34 = value;
             break;
-        case GroupSelect5C:
+        case GroupSelectC5:
             a35 = value;
             break;
 
-        case GroupSelect6A:
+        case GroupSelectA6:
             a36 = value;
             break;
-        case GroupSelect6B:
+        case GroupSelectB6:
             a37 = value;
             break;
-        case GroupSelect6C:
+        case GroupSelectC6:
             a38 = value;
             break;
 
-        case GroupSelect7A:
+        case GroupSelectA7:
             a39 = value;
             break;
-        case GroupSelect7B:
+        case GroupSelectB7:
             a40 = value;
             break;
-        case GroupSelect7C:
+        case GroupSelectC7:
             a41 = value;
             break;
 
-        case GroupSelect8A:
+        case GroupSelectA8:
             a42 = value;
             break;
-        case GroupSelect8B:
+        case GroupSelectB8:
             a43 = value;
             break;
-        case GroupSelect8C:
+        case GroupSelectC8:
             a44 = value;
             break;
 
@@ -505,85 +505,7 @@ float FFGLPlugin::GetFloatParameter( unsigned int index )
             
             ////////////////////////////////////////////////////////////////////////////////////////////////////    // groupSelect, group selection per layer
 
-        case GroupSelect1A:
-            return a21 ;
-            break;
-        case GroupSelect1B:
-            return a22 ;
-            break;
-        case GroupSelect1C:
-            return a23 ;
-            break;
 
-        case GroupSelect2A:
-            return a24 ;
-            break;
-        case GroupSelect2B:
-            return a25 ;
-            break;
-        case GroupSelect2C:
-            return a26 ;
-            break;
-
-        case GroupSelect3A:
-            return a27 ;
-            break;
-        case GroupSelect3B:
-            return a28 ;
-            break;
-        case GroupSelect3C:
-            return a29 ;
-            break;
-
-        case GroupSelect4A:
-            return a30 ;
-            break;
-        case GroupSelect4B:
-            return a31 ;
-            break;
-        case GroupSelect4C:
-            return a32 ;
-            break;
-
-        case GroupSelect5A:
-            return a33 ;
-            break;
-        case GroupSelect5B:
-            return a34 ;
-            break;
-        case GroupSelect5C:
-            return a35 ;
-            break;
-
-        case GroupSelect6A:
-            return a36 ;
-            break;
-        case GroupSelect6B:
-            return a37 ;
-            break;
-        case GroupSelect6C:
-            return a38 ;
-            break;
-
-        case GroupSelect7A:
-            return a39 ;
-            break;
-        case GroupSelect7B:
-            return a40 ;
-            break;
-        case GroupSelect7C:
-            return a41 ;
-            break;
-
-        case GroupSelect8A:
-            return a42 ;
-            break;
-        case GroupSelect8B:
-            return a43 ;
-            break;
-        case GroupSelect8C:
-            return a44 ;
-            break;
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////    // layer selection
 
