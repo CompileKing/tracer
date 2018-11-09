@@ -165,14 +165,14 @@ FFGLPlugin::FFGLPlugin()
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    SetParamInfo( LayerSelect1, "LayerSelect1", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect2, "LayerSelect2", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect3, "LayerSelect3", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect4, "LayerSelect4", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect5, "LayerSelect5", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect6, "LayerSelect6", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect7, "LayerSelect7", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_EVENT, 0.f); // layer selection
+    SetParamInfo( LayerSelect1, "LayerSelect1", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect2, "LayerSelect2", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect3, "LayerSelect3", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect4, "LayerSelect4", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect5, "LayerSelect5", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect6, "LayerSelect6", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect7, "LayerSelect7", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_BOOLEAN, 0.f); // layer selection
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
