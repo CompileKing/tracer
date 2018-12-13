@@ -24,23 +24,23 @@
 #define BypassDial7  18
 #define BypassDial8  19
 
-#define  LayerSelect1 44
-#define  LayerSelect2 45
-#define  LayerSelect3 46
-#define  LayerSelect4 47
-#define  LayerSelect5 48
-#define  LayerSelect6 49
-#define  LayerSelect7 50
-#define  LayerSelect8 51
+#define  LayerSelect1 20
+#define  LayerSelect2 21
+#define  LayerSelect3 22
+#define  LayerSelect4 23
+#define  LayerSelect5 24
+#define  LayerSelect6 25
+#define  LayerSelect7 26
+#define  LayerSelect8 27
 
-#define  OpacityFader1 52
-#define  OpacityFader2 53
-#define  OpacityFader3 54
-#define  OpacityFader4 55
-#define  OpacityFader5 56
-#define  OpacityFader6 57
-#define  OpacityFader7 58
-#define  OpacityFader8 59
+#define  OpacityFader1 28
+#define  OpacityFader2 29
+#define  OpacityFader3 30
+#define  OpacityFader4 31
+#define  OpacityFader5 32
+#define  OpacityFader6 33
+#define  OpacityFader7 34
+#define  OpacityFader8 35
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
