@@ -3,8 +3,11 @@
 //we need to include this file so we can access the functions that are used to create and run an FFGL plugin
 #include "FFGLPluginSDK.h"
 #include "pugixml.hpp"
+
 #include <time.h>
 #include <math.h>
+#include <chrono>
+#include <sys/time.h>
 
 
 //we create a class called FFLPlugin, that inherits from CFreeFramePlugin
