@@ -42,6 +42,9 @@
 #define  OpacityFader7 34
 #define  OpacityFader8 35
 
+#define BankSelectUp 36
+#define BankSelectDown 37
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Plugin information
@@ -114,7 +117,7 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( LayerSelect7, "LayerSelect7", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( LayerSelect8, "LayerSelect8", FF_TYPE_BOOLEAN, 0.f); // layer selection
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////
 
     SetParamInfo( OpacityFader1, "OpacityFader1", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( OpacityFader2, "OpacityFader2", FF_TYPE_STANDARD, 0.f);
@@ -124,6 +127,11 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( OpacityFader6, "OpacityFader6", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( OpacityFader7, "OpacityFader7", FF_TYPE_STANDARD, 0.f);
     SetParamInfo( OpacityFader8, "OpacityFader8", FF_TYPE_STANDARD, 0.f); // opacity faders
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	SetParamInfo(BankSelectUp, "BankSelectUp", FF_TYPE_EVENT, 0.f);
+	SetParamInfo(BankSelectDown, "BankSelectDown", FF_TYPE_EVENT, 0.f); // BankSelect
 
 
 	SetMinInputs( 1 );
@@ -282,6 +290,14 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case OpacityFader8:
             a60 = value;
             break;
+
+
+		case BankSelectDown:
+			a61 = value;
+			break;
+		case BankSelectUp:
+			a62 = value;
+			break;
             
 	}
 
