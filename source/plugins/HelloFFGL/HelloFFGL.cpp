@@ -57,11 +57,40 @@ FFGLPlugin::~FFGLPlugin()
 
 }
 
+double FFGLPlugin::getTimer()
+{
+    time_t timer;
+    
+    struct tm y2k = {0};
+    double seconds;
+    
+    y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
+    y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
+    
+    time(&timer);  /* get current time; same as: timer = time(NULL)  */
+    
+    seconds = difftime(timer,mktime(&y2k));
+    
+    return sin(seconds);
+}
+
+
+double FFGLPlugin::getXML()
+{
+    pugi::xml_document doc;
+    pugi::xml_parse_result
+        result = doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/testScreen.xml");
+    if (!result)
+        return 0.5;
+    else
+        return getTimer();
+}
+
 /*ProcessOpenGL is like the draw() function in processing and openframeworks.
 Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
-	//clear the background to a nice neutral grey
+    //clear the background to a nice neutral grey
 	glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT );
 
@@ -71,10 +100,10 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 	//now, we create a variable to hold the coordinates of the four corners of our rectangle
 	GLfloat verts[] =
 	{
-		-0.5f, 0.5f, //top left
-		0.5f, 0.5f, //top right
-		0.5f, -0.5f, //bottom right
-		-0.5f, -0.5f //bottom left
+		-getXML(), getXML(), //top left
+		getXML(), getXML(), //top right
+		getXML(), -getXML(), //bottom right
+		-getXML(), -getXML() //bottom left
 	};
 
 	//and we draw those corners as a triangle fan

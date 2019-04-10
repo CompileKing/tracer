@@ -2,6 +2,10 @@
 
 //we need to include this file so we can access the functions that are used to create and run an FFGL plugin
 #include "FFGLPluginSDK.h"
+#include "pugixml.hpp"
+#include <time.h>
+#include <math.h>
+
 
 //we create a class called FFLPlugin, that inherits from CFreeFramePlugin
 //this will let us access the functions that we use to create an FFGL plugin
@@ -12,6 +16,10 @@ class FFGLPlugin : public CFreeFrameGLPlugin
 public:
 	FFGLPlugin();
 	~FFGLPlugin();
+    
+    double getXML();
+    
+    double getTimer();
 
 	//these are all FFGL functions that are used to communicate with Resolume
 	//what they do is explained in the cpp file
@@ -33,4 +41,8 @@ public:
 			return FF_SUCCESS;
 		return FF_FAIL;
 	}
+    
+
+    
+    
 };
