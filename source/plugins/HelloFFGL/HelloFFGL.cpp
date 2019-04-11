@@ -57,16 +57,12 @@ FFGLPlugin::~FFGLPlugin()
 
 }
 
-double FFGLPlugin::getTimer()
+ProcessOpenGLStruct FFGLPlugin::giveGL()
 {
-    struct timeval tp;
-    gettimeofday(&tp, NULL);
-    long int ms = tp.tv_usec;
-    double result = ms/100000;
-    result = sin(result);
-    return result;
-
+    glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
 }
+
+
 
 
 double FFGLPlugin::getXML()
@@ -76,8 +72,8 @@ double FFGLPlugin::getXML()
         result = doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/testScreen.xml");
     if (!result)
         return 0.5;
-    else
-        return getTimer();
+    
+        
 }
 
 /*ProcessOpenGL is like the draw() function in processing and openframeworks.
@@ -85,7 +81,8 @@ Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
     //clear the background to a nice neutral grey
-	glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
+    giveGL();
+    
 	glClear( GL_COLOR_BUFFER_BIT );
 
 	//set the color to Arena cyan
@@ -94,10 +91,10 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 	//now, we create a variable to hold the coordinates of the four corners of our rectangle
 	GLfloat verts[] =
 	{
-		-getXML(), getXML(), //top left
-		getXML(), getXML(), //top right
-		getXML(), -getXML(), //bottom right
-		-getXML(), -getXML() //bottom left
+		-.5, .5, //top left
+		.5, .5, //top right
+		.5, -.5, //bottom right
+		-.5, -.5 //bottom left
 	};
 
 	//and we draw those corners as a triangle fan
