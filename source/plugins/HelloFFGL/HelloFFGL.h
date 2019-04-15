@@ -2,7 +2,7 @@
 
 //we need to include this file so we can access the functions that are used to create and run an FFGL plugin
 #include "FFGLPluginSDK.h"
-#include "pugixml.hpp"
+#include "InputRect.hpp"
 #include <math.h>
 
 
@@ -18,8 +18,12 @@ public:
 	~FFGLPlugin();
     double getXML();
     
+    InputRect rect;
+    void createArray();
+    void printArray();
     
-    ProcessOpenGLStruct giveGL();
+    
+    
     
     
     
@@ -45,7 +49,9 @@ public:
 		return FF_FAIL;
 	}
     
-
+    
+    
+    
     
     
 };

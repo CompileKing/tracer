@@ -10,15 +10,15 @@
 
 static CFFGLPluginInfo PluginInfo(
 	FFGLPlugin::CreateInstance,			// Create method
-	"XXX1",								// Plugin unique ID
+	"SH40",								// Plugin unique ID
 	"Hello FFGL!",						// Plugin name
-	1,						   			// API major version number												
+	1,						   			// API major version number
 	500,								// API minor version number
 	1,									// Plugin major version number
 	000,								// Plugin minor version number
 	FF_EFFECT,							// Plugin type
-	"Completely empty example",			// Plugin description
-	"Joris de Jong // Resolume"			// About 
+	"Creates tracers from you ASS",			// Plugin description
+	"Sem Shimla // Resolume"			// About
 
 	/*The important bits here are:
 	- "Plugin unique ID". This number is used the identify the plugin internally and needs to be different for each and every FFGL plugin in existence.
@@ -50,6 +50,11 @@ FFGLPlugin::FFGLPlugin()
 	So why is the definition there in the CreateInstance call. I don't know. Someone must have thought that was a good idea at the time */
 	SetMinInputs( 1 );
 	SetMaxInputs( 1 );
+    
+    // create the inputRect arrays
+    rect.getInputRect();
+    
+    
 }
 
 FFGLPlugin::~FFGLPlugin()
@@ -57,29 +62,19 @@ FFGLPlugin::~FFGLPlugin()
 
 }
 
-ProcessOpenGLStruct FFGLPlugin::giveGL()
-{
-    glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
-}
 
 
 
 
-double FFGLPlugin::getXML()
-{
-    pugi::xml_document doc;
-    pugi::xml_parse_result
-        result = doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/testScreen.xml");
-    if (!result)
-        return 0.5;
-}
+
+
 
 /*ProcessOpenGL is like the draw() function in processing and openframeworks.
 Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
     //clear the background to a nice neutral grey
-    giveGL();
+    glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
     
 	glClear( GL_COLOR_BUFFER_BIT );
 
