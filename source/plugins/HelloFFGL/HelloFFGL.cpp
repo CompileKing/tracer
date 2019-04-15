@@ -1,4 +1,7 @@
 #include "HelloFFGL.h"
+#include <iostream>
+
+using namespace std;
 
 //here we define the word 'theFirstParam' to equal zero
 //this is handy so we don't have to remember which index each param has
@@ -53,8 +56,6 @@ FFGLPlugin::FFGLPlugin()
     
     // create the inputRect arrays
     rect.getInputRect();
-    
-    
 }
 
 FFGLPlugin::~FFGLPlugin()
@@ -62,38 +63,28 @@ FFGLPlugin::~FFGLPlugin()
 
 }
 
-
-
-
-
-
-
-
 /*ProcessOpenGL is like the draw() function in processing and openframeworks.
 Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
-    //clear the background to a nice neutral grey
-    glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
     
+    glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT );
-
-	//set the color to Arena cyan
 	glColor4f( 0.5f, 1.0f, 0.82f, 1.0f );
-	
-	//now, we create a variable to hold the coordinates of the four corners of our rectangle
-	GLfloat verts[] =
-	{
-		-.5, .5, //top left
-		.5, .5, //top right
-		.5, -.5, //bottom right
-		-.5, -.5 //bottom left
-	};
-
-	//and we draw those corners as a triangle fan
-	glEnableClientState( GL_VERTEX_ARRAY );
-	glVertexPointer( 2, GL_FLOAT, 0, verts );
-	glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
+    
+    for (int i=0;i<rect.sIndex;i++)
+    {
+        GLfloat verts[] =
+        {
+            rect.xArrayPtr[i],rect.yArrayPtr[i],
+            rect.xArrayPtr[i+1],rect.yArrayPtr[i+1],
+            rect.xArrayPtr[i+2],rect.yArrayPtr[i+2],
+            rect.xArrayPtr[i+3],rect.yArrayPtr[i+3],
+        };
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 2, GL_FLOAT, 0, verts );
+        glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
+    }
 
 	return FF_SUCCESS;
 }

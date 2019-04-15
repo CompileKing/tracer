@@ -22,11 +22,6 @@ public:
     void createArray();
     void printArray();
     
-    
-    
-    
-    
-    
 
 	//these are all FFGL functions that are used to communicate with Resolume
 	//what they do is explained in the cpp file
