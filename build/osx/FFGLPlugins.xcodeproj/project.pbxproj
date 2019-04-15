@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		0E5791511F3BA22600EF6C60 /* HelloFFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E57914F1F3BA22600EF6C60 /* HelloFFGL.cpp */; };
 		648FA7A7225E6E7800896350 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 648FA7A5225E6E7800896350 /* pugixml.cpp */; };
+		64E04B9722651B7F00F18F61 /* InputRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E04B9422651B7F00F18F61 /* InputRect.cpp */; };
+		64E04B9822651B7F00F18F61 /* CreateRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E04B9522651B7F00F18F61 /* CreateRect.cpp */; };
 		D6DB1A4D1B9054FE007E6883 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1A2A1B9054A9007E6883 /* FFGL.cpp */; };
 		D6DB1A541B9054FE007E6883 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1A311B9054A9007E6883 /* FFGLPluginInfo.cpp */; };
 		D6DB1A561B9054FE007E6883 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1A331B9054A9007E6883 /* FFGLPluginInfoData.cpp */; };
@@ -53,6 +55,10 @@
 		648FA7A4225E6E7800896350 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		648FA7A5225E6E7800896350 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		648FA7A6225E6E7800896350 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		64E04B9322651B7F00F18F61 /* InputRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputRect.hpp; sourceTree = "<group>"; };
+		64E04B9422651B7F00F18F61 /* InputRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputRect.cpp; sourceTree = "<group>"; };
+		64E04B9522651B7F00F18F61 /* CreateRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateRect.cpp; sourceTree = "<group>"; };
+		64E04B9622651B7F00F18F61 /* CreateRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CreateRect.hpp; sourceTree = "<group>"; };
 		A9F28D5818B37D0C007D7C87 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A9F28D5A18B37D12007D7C87 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D69416971B9041FA00D30319 /* FFGLPlugin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FFGLPlugin-Info.plist"; sourceTree = "<group>"; };
@@ -96,6 +102,10 @@
 			children = (
 				0E57914F1F3BA22600EF6C60 /* HelloFFGL.cpp */,
 				0E5791501F3BA22600EF6C60 /* HelloFFGL.h */,
+				64E04B9522651B7F00F18F61 /* CreateRect.cpp */,
+				64E04B9622651B7F00F18F61 /* CreateRect.hpp */,
+				64E04B9422651B7F00F18F61 /* InputRect.cpp */,
+				64E04B9322651B7F00F18F61 /* InputRect.hpp */,
 			);
 			name = HelloFFGL;
 			path = ../../source/plugins/HelloFFGL;
@@ -282,10 +292,12 @@
 				0E5791511F3BA22600EF6C60 /* HelloFFGL.cpp in Sources */,
 				D6DB1A541B9054FE007E6883 /* FFGLPluginInfo.cpp in Sources */,
 				D6DB1A561B9054FE007E6883 /* FFGLPluginInfoData.cpp in Sources */,
+				64E04B9722651B7F00F18F61 /* InputRect.cpp in Sources */,
 				D6DB1A571B9054FE007E6883 /* FFGLPluginManager.cpp in Sources */,
 				D6DB1A5A1B9054FE007E6883 /* FFGLPluginSDK.cpp in Sources */,
 				648FA7A7225E6E7800896350 /* pugixml.cpp in Sources */,
 				D6DB1A5C1B9054FE007E6883 /* FFGLShader.cpp in Sources */,
+				64E04B9822651B7F00F18F61 /* CreateRect.cpp in Sources */,
 				D6DB1A6B1B906185007E6883 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -72,8 +72,6 @@ double FFGLPlugin::getXML()
         result = doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/testScreen.xml");
     if (!result)
         return 0.5;
-    
-        
 }
 
 /*ProcessOpenGL is like the draw() function in processing and openframeworks.
