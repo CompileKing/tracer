@@ -16,7 +16,7 @@ void InputRect::getInputRect()
     pugi::xml_document doc;
     pugi::xml_parse_result
     result =
-        doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/testScreen.xml");
+        doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/MGX_ULTRA_JB_ADVANCE-v6-test.xml");
     
     compResX = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("width").as_int();
     compResY = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("height").as_int();

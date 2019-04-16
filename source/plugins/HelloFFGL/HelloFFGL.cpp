@@ -70,17 +70,19 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT );
-	glColor4f( 0.5f, 1.0f, 0.82f, 1.0f );
     
-    
+    glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+    glPolygonMode(GL_FRONT,GL_LINE);
+
     for (int i=0;i<rect.sIndex;i++)
     {
         GLfloat verts[] =
         {
-            rect.xArrayPtr[(4*i)],rect.yArrayPtr[(4*i)],
-            rect.xArrayPtr[(4*i+1)],rect.yArrayPtr[(4*i+1)],
-            rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],
-            rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],
+            rect.xArrayPtr[(4*i)],rect.yArrayPtr[(4*i)],        //top left
+            rect.xArrayPtr[(4*i+1)],rect.yArrayPtr[(4*i+1)],    //top right
+            rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
+            rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
+            
         };
         
         glEnableClientState( GL_VERTEX_ARRAY );
@@ -88,6 +90,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
         glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
     }
     
+
     
     /*
     GLfloat verts[] =
