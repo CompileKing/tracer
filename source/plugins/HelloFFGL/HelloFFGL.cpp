@@ -72,8 +72,9 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 	glClear( GL_COLOR_BUFFER_BIT );
     
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    glPolygonMode(GL_FRONT ,GL_LINE);
+    //glPolygonMode(GL_FRONT ,GL_LINE);
     glLineWidth(2.);
+    glEnable(GL_LINE_SMOOTH);
     //GLfloat lineWidthRange[2] = {0.0f, 0.0f};
     //glLineWidth (GLfloat 2.);
 
@@ -90,7 +91,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
         
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_FLOAT, 0, verts );
-        glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
+        glDrawArrays( GL_LINE_LOOP  , 0, 4 );
     }
     
 
