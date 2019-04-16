@@ -30,8 +30,8 @@ void InputRect::getInputRect()
             {
                 // fill the x array everytime an x attribute hits with it's double
 
-                xArray[vIndex] =  value.attribute("x").as_double() / compResX;
-                yArray[vIndex] =  value.attribute("y").as_double() / compResY;
+                xArray[vIndex] =  (value.attribute("x").as_double() / compResX) * 2. - 1.;
+                yArray[vIndex] =  (value.attribute("y").as_double() / compResY) * 2. - 1.;
                 
                 vIndex++;
             }

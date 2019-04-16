@@ -21,7 +21,7 @@ static CFFGLPluginInfo PluginInfo(
 	000,								// Plugin minor version number
 	FF_EFFECT,							// Plugin type
 	"Creates tracers from you ASS",			// Plugin description
-	"Sem Shimla // Resolume"			// About
+	"Sem Shimla // Pixel Clone"			// About
 
 	/*The important bits here are:
 	- "Plugin unique ID". This number is used the identify the plugin internally and needs to be different for each and every FFGL plugin in existence.
@@ -72,21 +72,37 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 	glClear( GL_COLOR_BUFFER_BIT );
 	glColor4f( 0.5f, 1.0f, 0.82f, 1.0f );
     
+    
     for (int i=0;i<rect.sIndex;i++)
     {
         GLfloat verts[] =
         {
-            rect.xArrayPtr[i],rect.yArrayPtr[i],
-            rect.xArrayPtr[i+1],rect.yArrayPtr[i+1],
-            rect.xArrayPtr[i+2],rect.yArrayPtr[i+2],
-            rect.xArrayPtr[i+3],rect.yArrayPtr[i+3],
+            rect.xArrayPtr[(4*i)],rect.yArrayPtr[(4*i)],
+            rect.xArrayPtr[(4*i+1)],rect.yArrayPtr[(4*i+1)],
+            rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],
+            rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],
         };
+        
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_FLOAT, 0, verts );
         glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
     }
+    
+    
+    /*
+    GLfloat verts[] =
+    {
+        rect.xArrayPtr[0],rect.yArrayPtr[0],
+        rect.xArrayPtr[1],rect.yArrayPtr[1],
+        rect.xArrayPtr[2],rect.yArrayPtr[2],
+        rect.xArrayPtr[3],rect.yArrayPtr[3],
+    };
+    glEnableClientState( GL_VERTEX_ARRAY );
+    glVertexPointer( 2, GL_FLOAT, 0, verts );
+    glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
 
 	return FF_SUCCESS;
+     */
 }
 
 /* SetFloatParameter is called by Resolume when you change a slider in the effect */
