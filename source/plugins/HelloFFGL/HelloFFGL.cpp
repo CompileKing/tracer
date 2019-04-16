@@ -68,29 +68,29 @@ Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
     
-    glClearColor( 0.23f, 0.23f, 0.23f, 1.0f );
+    glClearColor( 0.f, 0.f, 0.f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT );
     
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     //glPolygonMode(GL_FRONT ,GL_LINE);
-    glLineWidth(2.);
-    glEnable(GL_LINE_SMOOTH);
+    glLineWidth(aFloat*10);
+    
+    glDisable(GL_LINE_SMOOTH);
     //GLfloat lineWidthRange[2] = {0.0f, 0.0f};
     //glLineWidth (GLfloat 2.);
 
     for (int i=0;i<rect.sIndex;i++)
     {
-        GLfloat verts[] =
+        GLdouble verts[] =
         {
             rect.xArrayPtr[(4*i)],rect.yArrayPtr[(4*i)],        //top left
             rect.xArrayPtr[(4*i+1)],rect.yArrayPtr[(4*i+1)],    //top right
             rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
             rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
-            
         };
         
         glEnableClientState( GL_VERTEX_ARRAY );
-        glVertexPointer( 2, GL_FLOAT, 0, verts );
+        glVertexPointer( 2, GL_DOUBLE, 0, verts );
         glDrawArrays( GL_LINE_LOOP  , 0, 4 );
     }
     
