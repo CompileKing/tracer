@@ -1,5 +1,6 @@
 #include "HelloFFGL.h"
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ static CFFGLPluginInfo PluginInfo(
 	1,									// Plugin major version number
 	000,								// Plugin minor version number
 	FF_EFFECT,							// Plugin type
-	"Creates tracers from you ASS",			// Plugin description
+	"Creates an outline on your slices",			// Plugin description
 	"Sem Shimla // Pixel Clone"			// About
 
 	/*The important bits here are:
@@ -41,10 +42,11 @@ FFGLPlugin::FFGLPlugin()
 	"Does Nothing" is the name (16 character maximum)
 	FF_TYPE_STANDARD means it's a regular slider
 	and 0.5f is it's default value */
-	SetParamInfo( theFirstParam, "Does Nothing", FF_TYPE_STANDARD, 0.5f);
+	SetParamInfo( theFirstParam, "Line Width", FF_TYPE_STANDARD, 0.5f);
 
 	//because we set our param to be 0.5f by default, it makes sense that our float variable also starts off at 0.5f
 	aFloat = 0.5f;
+    
 
 	/*This will make sure that the plugin gets recognised as an EFFECT on both OSX and Windows.
 	A SOURCE has 0 inputs
@@ -75,7 +77,8 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     //glPolygonMode(GL_FRONT ,GL_LINE);
     glLineWidth(aFloat*10);
     
-    glDisable(GL_LINE_SMOOTH);
+    //glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_LINE_SMOOTH);
     //GLfloat lineWidthRange[2] = {0.0f, 0.0f};
     //glLineWidth (GLfloat 2.);
 
@@ -83,33 +86,16 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     {
         GLdouble verts[] =
         {
-            rect.xArrayPtr[(4*i)],rect.yArrayPtr[(4*i)],        //top left
+            rect.xArrayPtr[(4*i)],  rect.yArrayPtr[(4*i)],      //top left
             rect.xArrayPtr[(4*i+1)],rect.yArrayPtr[(4*i+1)],    //top right
             rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
             rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
         };
-        
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_DOUBLE, 0, verts );
         glDrawArrays( GL_LINE_LOOP  , 0, 4 );
     }
-    
 
-    
-    /*
-    GLfloat verts[] =
-    {
-        rect.xArrayPtr[0],rect.yArrayPtr[0],
-        rect.xArrayPtr[1],rect.yArrayPtr[1],
-        rect.xArrayPtr[2],rect.yArrayPtr[2],
-        rect.xArrayPtr[3],rect.yArrayPtr[3],
-    };
-    glEnableClientState( GL_VERTEX_ARRAY );
-    glVertexPointer( 2, GL_FLOAT, 0, verts );
-    glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
-
-	return FF_SUCCESS;
-     */
 }
 
 /* SetFloatParameter is called by Resolume when you change a slider in the effect */
@@ -122,7 +108,6 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
 		aFloat = value; //this means we're setting our float to whatever value the first parameter has in Resolume
 		break;
 	}
-
 	return FF_SUCCESS;
 }
 
@@ -130,17 +115,16 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
    For instance if you're controlling rotation of something, you can use a multiplier here to show the value in degrees */
 float FFGLPlugin::GetFloatParameter( unsigned int index )
 {
-	switch ( index )
-	{
-	case theFirstParam:
-		return aFloat; //right now, we just want to return the value of our float
-		break;
-	default:
-		return 0.0f; //to be safe, always return something
-		break;
-	}
-
-	
+    
+    switch ( index )
+    {
+        case theFirstParam:
+            return lineWidth = aFloat * 10;
+            break;
+        default:
+            return 0.0f; //to be safe, always return something
+            break;
+    }
 }
 
 

@@ -6,6 +6,9 @@
 #include <math.h>
 
 
+using namespace std;
+
+
 
 //we create a class called FFLPlugin, that inherits from CFreeFramePlugin
 //this will let us access the functions that we use to create an FFGL plugin
@@ -22,6 +25,8 @@ public:
     void createArray();
     void printArray();
     
+    char s_Displayvalue[15];
+    
 
 	//these are all FFGL functions that are used to communicate with Resolume
 	//what they do is explained in the cpp file
@@ -33,6 +38,8 @@ public:
 	//this is a float that will be set by Resolume, and we can use it to change stuff in our plugin
 	//we're going to link the value of this float to the value of the slider in Resolume
 	float aFloat;
+    int lineWidth;
+    string returnValue;
 
 	//this is boiler plate code that takes care of all the behind the scenes stuff used in creating a plugin
 	//in other words, we don't want to mess with this
