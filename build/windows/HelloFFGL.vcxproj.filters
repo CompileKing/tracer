@@ -21,6 +21,9 @@
     <Filter Include="Source Files\lib\ffgl\utilities">
       <UniqueIdentifier>{e49878bc-d6f1-47f3-af9c-778389d6fb40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\lib\pugi">
+      <UniqueIdentifier>{21e1bd69-1036-4244-a4df-696a6e92630d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\lib\glee\GLee.c">
@@ -49,6 +52,15 @@
     </ClCompile>
     <ClCompile Include="..\..\source\lib\ffgl\utilities\utilities.cpp">
       <Filter>Source Files\lib\ffgl\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\plugins\HelloFFGL\GetPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\plugins\HelloFFGL\InputRect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\lib\pugixml\pugixml.cpp">
+      <Filter>Source Files\lib\pugi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\plugins\HelloFFGL\HelloFFGL.cpp">
       <Filter>Source Files</Filter>
@@ -87,6 +99,18 @@
     </ClInclude>
     <ClInclude Include="..\..\source\lib\ffgl\utilities\utilities.h">
       <Filter>Source Files\lib\ffgl\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\plugins\HelloFFGL\GetPath.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\plugins\HelloFFGL\InputRect.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\lib\pugixml\pugiconfig.hpp">
+      <Filter>Source Files\lib\pugi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\lib\pugixml\pugixml.hpp">
+      <Filter>Source Files\lib\pugi</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\plugins\HelloFFGL\HelloFFGL.h">
       <Filter>Source Files</Filter>
