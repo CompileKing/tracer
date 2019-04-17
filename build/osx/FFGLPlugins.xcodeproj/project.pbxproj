@@ -22,8 +22,9 @@
 
 /* Begin PBXBuildFile section */
 		0E5791511F3BA22600EF6C60 /* HelloFFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E57914F1F3BA22600EF6C60 /* HelloFFGL.cpp */; };
+		6456C1E722676659001B4F08 /* GetPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6456C1E522676659001B4F08 /* GetPath.cpp */; };
+		6456C1E822676659001B4F08 /* InputRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6456C1E622676659001B4F08 /* InputRect.cpp */; };
 		648FA7A7225E6E7800896350 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 648FA7A5225E6E7800896350 /* pugixml.cpp */; };
-		64E04B9722651B7F00F18F61 /* InputRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E04B9422651B7F00F18F61 /* InputRect.cpp */; };
 		D6DB1A4D1B9054FE007E6883 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1A2A1B9054A9007E6883 /* FFGL.cpp */; };
 		D6DB1A541B9054FE007E6883 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1A311B9054A9007E6883 /* FFGLPluginInfo.cpp */; };
 		D6DB1A561B9054FE007E6883 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1A331B9054A9007E6883 /* FFGLPluginInfoData.cpp */; };
@@ -51,11 +52,13 @@
 		2FD1224818853D700009EBA8 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		2FD1225318853FFB0009EBA8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2FD1226B188540470009EBA8 /* HelloFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloFFGL.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6456C1E322676658001B4F08 /* InputRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputRect.hpp; sourceTree = "<group>"; };
+		6456C1E422676659001B4F08 /* GetPath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GetPath.hpp; sourceTree = "<group>"; };
+		6456C1E522676659001B4F08 /* GetPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetPath.cpp; sourceTree = "<group>"; };
+		6456C1E622676659001B4F08 /* InputRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputRect.cpp; sourceTree = "<group>"; };
 		648FA7A4225E6E7800896350 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		648FA7A5225E6E7800896350 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		648FA7A6225E6E7800896350 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
-		64E04B9322651B7F00F18F61 /* InputRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputRect.hpp; sourceTree = "<group>"; };
-		64E04B9422651B7F00F18F61 /* InputRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputRect.cpp; sourceTree = "<group>"; };
 		A9F28D5818B37D0C007D7C87 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A9F28D5A18B37D12007D7C87 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D69416971B9041FA00D30319 /* FFGLPlugin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FFGLPlugin-Info.plist"; sourceTree = "<group>"; };
@@ -99,8 +102,10 @@
 			children = (
 				0E57914F1F3BA22600EF6C60 /* HelloFFGL.cpp */,
 				0E5791501F3BA22600EF6C60 /* HelloFFGL.h */,
-				64E04B9422651B7F00F18F61 /* InputRect.cpp */,
-				64E04B9322651B7F00F18F61 /* InputRect.hpp */,
+				6456C1E622676659001B4F08 /* InputRect.cpp */,
+				6456C1E322676658001B4F08 /* InputRect.hpp */,
+				6456C1E522676659001B4F08 /* GetPath.cpp */,
+				6456C1E422676659001B4F08 /* GetPath.hpp */,
 			);
 			name = HelloFFGL;
 			path = ../../source/plugins/HelloFFGL;
@@ -284,10 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6DB1A4D1B9054FE007E6883 /* FFGL.cpp in Sources */,
+				6456C1E722676659001B4F08 /* GetPath.cpp in Sources */,
+				6456C1E822676659001B4F08 /* InputRect.cpp in Sources */,
 				0E5791511F3BA22600EF6C60 /* HelloFFGL.cpp in Sources */,
 				D6DB1A541B9054FE007E6883 /* FFGLPluginInfo.cpp in Sources */,
 				D6DB1A561B9054FE007E6883 /* FFGLPluginInfoData.cpp in Sources */,
-				64E04B9722651B7F00F18F61 /* InputRect.cpp in Sources */,
 				D6DB1A571B9054FE007E6883 /* FFGLPluginManager.cpp in Sources */,
 				D6DB1A5A1B9054FE007E6883 /* FFGLPluginSDK.cpp in Sources */,
 				648FA7A7225E6E7800896350 /* pugixml.cpp in Sources */,

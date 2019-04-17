@@ -11,6 +11,10 @@
 
 #include <stdio.h>
 #include "pugixml.hpp"
+#include "GetPath.hpp"
+#include <string>
+
+using namespace std;
 
 
 class InputRect
@@ -22,8 +26,6 @@ private:
 
     
 public:
-    
-    InputRect();
     
     int compResX;
     int compResY;
@@ -39,21 +41,6 @@ public:
     double yArray[1000];
     double *yArrayPtr = yArray;
     
-    
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
 
 };
 

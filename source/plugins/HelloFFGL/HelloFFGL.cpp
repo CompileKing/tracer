@@ -43,11 +43,11 @@ FFGLPlugin::FFGLPlugin()
      "Does Nothing" is the name (16 character maximum)
      FF_TYPE_STANDARD means it's a regular slider
      and 0.5f is it's default value */
-    SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.5f);
+    SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.1f);
     SetParamInfo( trigger, "Reload ASS", FF_TYPE_EVENT, 0.f);
     
     //because we set our param to be 0.5f by default, it makes sense that our float variable also starts off at 0.5f
-    aFloat = 0.5f;
+    aFloat = 0.1f;
     
     
     /*This will make sure that the plugin gets recognised as an EFFECT on both OSX and Windows.
