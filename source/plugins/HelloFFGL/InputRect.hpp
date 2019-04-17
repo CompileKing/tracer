@@ -23,6 +23,8 @@ private:
     
 public:
     
+    InputRect();
+    
     int compResX;
     int compResY;
     

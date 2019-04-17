@@ -22,8 +22,9 @@ public:
     double getXML();
     
     InputRect rect;
-    void createArray();
-    void printArray();
+    void reloadXML();
+    
+    
     
     char s_Displayvalue[15];
     
@@ -38,8 +39,9 @@ public:
 	//this is a float that will be set by Resolume, and we can use it to change stuff in our plugin
 	//we're going to link the value of this float to the value of the slider in Resolume
 	float aFloat;
+    bool aTrigger;
     int lineWidth;
-    string returnValue;
+    
 
 	//this is boiler plate code that takes care of all the behind the scenes stuff used in creating a plugin
 	//in other words, we don't want to mess with this
@@ -50,6 +52,7 @@ public:
 			return FF_SUCCESS;
 		return FF_FAIL;
 	}
+    
     
     
     

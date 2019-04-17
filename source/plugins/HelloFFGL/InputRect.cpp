@@ -8,12 +8,19 @@
 
 #include "InputRect.hpp"
 
-
+InputRect::InputRect()
+{
+    
+}
 
 
 void InputRect::getInputRect()
 {
+    
+    
+    
     pugi::xml_document doc;
+    
     pugi::xml_parse_result
     result =
         doc.load_file("/Users/Shimla/Documents/Resolume Arena 6/Presets/Advanced Output/testScreen.xml");
