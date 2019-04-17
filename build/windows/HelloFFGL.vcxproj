@@ -28,7 +28,10 @@
     <ClCompile Include="..\..\source\lib\ffgl\FFGLShader.cpp" />
     <ClCompile Include="..\..\source\lib\ffgl\utilities\utilities.cpp" />
     <ClCompile Include="..\..\source\lib\glee\GLee.c" />
+    <ClCompile Include="..\..\source\lib\pugixml\pugixml.cpp" />
+    <ClCompile Include="..\..\source\plugins\HelloFFGL\GetPath.cpp" />
     <ClCompile Include="..\..\source\plugins\HelloFFGL\HelloFFGL.cpp" />
+    <ClCompile Include="..\..\source\plugins\HelloFFGL\InputRect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\lib\ffgl\FFGL.h" />
@@ -42,7 +45,11 @@
     <ClInclude Include="..\..\source\lib\ffgl\FreeFrame.h" />
     <ClInclude Include="..\..\source\lib\ffgl\utilities\utilities.h" />
     <ClInclude Include="..\..\source\lib\glee\GLee.h" />
+    <ClInclude Include="..\..\source\lib\pugixml\pugiconfig.hpp" />
+    <ClInclude Include="..\..\source\lib\pugixml\pugixml.hpp" />
+    <ClInclude Include="..\..\source\plugins\HelloFFGL\GetPath.hpp" />
     <ClInclude Include="..\..\source\plugins\HelloFFGL\HelloFFGL.h" />
+    <ClInclude Include="..\..\source\plugins\HelloFFGL\InputRect.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8EE99351-6226-415E-B2E9-2DCB2985F371}</ProjectGuid>
