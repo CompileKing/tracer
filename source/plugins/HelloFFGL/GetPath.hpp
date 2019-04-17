@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <string>
-#include "../../lib/pugixml/pugiconfig.hpp"
+#include "../../lib/pugixml/pugixml.hpp"
 #include <iostream>
 
 using namespace std;
