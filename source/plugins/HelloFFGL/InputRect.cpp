@@ -38,18 +38,25 @@ void InputRect::getInputRect()
     
     if (result)
     {
-        for (pugi::xml_node tool: doc.child("XmlState").child("ScreenSetup").child("screens").child("Screen").child("layers").children("Slice"))
+        
+        for (pugi::xml_node screen: doc.child("XmlState").child("ScreenSetup").child("screens").children("Screen"))
         {
-            // run through all the v children of those slices
-            for (pugi::xml_node value: tool.child("InputRect").children("v"))
+            
+            if (strncmp (screen.attribute("name").as_string(),"Tracer",6)==0)
             {
-                // fill the x array everytime an x attribute hits with it's double
-                xArray[vIndex] =  (value.attribute("x").as_double() / compResX) * 2. - 1.;
-                yArray[vIndex] =  (value.attribute("y").as_double() / compResY) * 2. - 1.;
-                
-                vIndex++;
+                for (pugi::xml_node slice: screen.child("layers").children("Slice"))
+                {
+                    
+                    for (pugi::xml_node value: slice.child("InputRect").children("v"))
+                    {
+                        xArray[vIndex] =  (value.attribute("x").as_double() / compResX) * 2. - 1.;
+                        yArray[vIndex] =  (value.attribute("y").as_double() / compResY) * 2. - 1.;
+                        
+                        vIndex++;
+                    }
+                    sIndex++;
+                }
             }
-            sIndex++;
         }
     }
 }
