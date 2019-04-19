@@ -33,17 +33,7 @@ void InputRect::getInputRect()
     string s3 = AssPath.getAssPath();
     homePath = s1 + s2 + s3;
     
-    /*
-    char cstr[homePath.length()];
     
-    for (int i=0;i<sizeof(cstr);i++)
-    {
-        cstr[i] = homePath[i];
-        cout << cstr[i];
-    }
-    
-    cstr[homePath.size()] = '\0';
-     */
     
     pugi::xml_document doc;
     pugi::xml_parse_result result = doc.load_file(homePath.c_str());
@@ -53,6 +43,7 @@ void InputRect::getInputRect()
     
     if (result)
     {
+        isFileLoaded = true;
         for (pugi::xml_node screen: doc.child("XmlState").child("ScreenSetup").child("screens").children("Screen"))
         {
             if (strncmp (screen.attribute("name").as_string(),"Tracer",6) == 0)
@@ -73,29 +64,8 @@ void InputRect::getInputRect()
     }
     else
     {
-        for (int i=0;i<4;i++)
-        {
-            switch (i) {
-                case 0:
-                    xArray[0] = -0.5;
-                    yArray[0] = 0.5;
-                    break;
-                case 1:
-                    xArray[1] = 0.5;
-                    yArray[1] = 0.5;
-                    break;
-                case 2:
-                    xArray[2] = 0.5;
-                    yArray[2] = -0.5;
-                    break;
-                case 3:
-                    xArray[3] = -0.5;
-                    yArray[4] = -0.5;
-                    break;
-                    
-                default:
-                    break;
-            }
+        isFileLoaded = false;
+        
         }
             
             /*
@@ -105,7 +75,7 @@ void InputRect::getInputRect()
              -0.5f, -0.5f //bottom left
              */
         
-    }
+    
 }
 
 

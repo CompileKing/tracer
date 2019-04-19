@@ -46,6 +46,8 @@ public:
     double yArray[1000];
     double *yArrayPtr = yArray;
     
+    bool isFileLoaded;
+    
 
 };
 

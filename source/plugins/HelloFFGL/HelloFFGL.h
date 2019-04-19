@@ -40,8 +40,10 @@ public:
 	//we're going to link the value of this float to the value of the slider in Resolume
 	float aFloat;
     float xfloat;
+    bool aBool;
     bool aTrigger;
     int lineWidth;
+    
     
 
 	//this is boiler plate code that takes care of all the behind the scenes stuff used in creating a plugin
