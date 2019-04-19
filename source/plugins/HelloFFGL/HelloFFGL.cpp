@@ -102,6 +102,8 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
         glVertexPointer( 2, GL_DOUBLE, 0, verts );
         glDrawArrays( GL_LINE_LOOP  , 0, 4 );
     }
+    
+    return FF_SUCCESS;
 
 }
 
