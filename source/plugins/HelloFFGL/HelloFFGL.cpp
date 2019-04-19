@@ -9,6 +9,7 @@ using namespace std;
 #define lineWidthParam 0
 #define trigger 1
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Plugin information
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,8 +47,10 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.1f);
     SetParamInfo( trigger, "Reload ASS", FF_TYPE_EVENT, 0.f);
     
+    
     //because we set our param to be 0.5f by default, it makes sense that our float variable also starts off at 0.5f
     aFloat = 0.1f;
+    
     
     
     /*This will make sure that the plugin gets recognised as an EFFECT on both OSX and Windows.
@@ -88,7 +91,6 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     for (int i=0;i<rect.sIndex;i++)
     {
-        
         GLdouble verts[] =
         {
             rect.xArrayPtr[(4*i)],  rect.yArrayPtr[(4*i)],      //top left
@@ -96,8 +98,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
             rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
             rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
         };
-        
-        glEnableClientState( GL_VERTEX_ARRAY );
+        glEnableClientState( GL_VERTEX_ARRAY   );
         glVertexPointer( 2, GL_DOUBLE, 0, verts );
         glDrawArrays( GL_LINE_LOOP  , 0, 4 );
     }
@@ -124,6 +125,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             break;
         case trigger:
             aTrigger = value;
+        
     }
     return FF_SUCCESS;
 }

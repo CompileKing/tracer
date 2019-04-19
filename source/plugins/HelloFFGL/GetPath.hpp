@@ -25,12 +25,6 @@ public:
     string assPath;
 
 
-
-
-
-
-
-
 };
 
 #endif /* GetPath_hpp */

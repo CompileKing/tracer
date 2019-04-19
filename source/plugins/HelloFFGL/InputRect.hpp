@@ -27,6 +27,11 @@ private:
     
 public:
     
+    
+    InputRect();
+    ~InputRect();
+     
+    
     int compResX;
     int compResY;
     

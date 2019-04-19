@@ -9,6 +9,15 @@
 #include "InputRect.hpp"
 
 
+InputRect::InputRect()
+{
+    
+}
+
+InputRect::~InputRect()
+{
+    
+}
 
 
 void InputRect::getInputRect()
@@ -24,29 +33,30 @@ void InputRect::getInputRect()
     string s3 = AssPath.getAssPath();
     homePath = s1 + s2 + s3;
     
-    char cstr[homePath.size() + 1];
-    homePath.copy(cstr, homePath.size() + 1);
+    char cstr[homePath.length()];
+    
+    for (int i=0;i<sizeof(cstr);i++)
+    {
+        cstr[i] = homePath[i];
+        cout << cstr[i];
+    }
+    
     cstr[homePath.size()] = '\0';
     
     pugi::xml_document doc;
-    pugi::xml_parse_result
-    result =
-        doc.load_file(cstr);
+    pugi::xml_parse_result result = doc.load_file(cstr);
     
     compResX = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("width").as_int();
     compResY = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("height").as_int();
     
     if (result)
     {
-        
         for (pugi::xml_node screen: doc.child("XmlState").child("ScreenSetup").child("screens").children("Screen"))
         {
-            
-            if (strncmp (screen.attribute("name").as_string(),"Tracer",6)==0)
+            if (strncmp (screen.attribute("name").as_string(),"Tracer",6) == 0)
             {
                 for (pugi::xml_node slice: screen.child("layers").children("Slice"))
                 {
-                    
                     for (pugi::xml_node value: slice.child("InputRect").children("v"))
                     {
                         xArray[vIndex] =  (value.attribute("x").as_double() / compResX) * 2. - 1.;
@@ -58,6 +68,41 @@ void InputRect::getInputRect()
                 }
             }
         }
+    }
+    else
+    {
+        for (int i=0;i<4;i++)
+        {
+            switch (i) {
+                case 0:
+                    xArray[0] = -0.5;
+                    yArray[0] = 0.5;
+                    break;
+                case 1:
+                    xArray[1] = 0.5;
+                    yArray[1] = 0.5;
+                    break;
+                case 2:
+                    xArray[2] = 0.5;
+                    yArray[2] = -0.5;
+                    break;
+                case 3:
+                    xArray[3] = -0.5;
+                    yArray[4] = -0.5;
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            
+            /*
+             -0.5f, 0.5f, //top left
+             0.5f, 0.5f, //top right
+             0.5f, -0.5f, //bottom right
+             -0.5f, -0.5f //bottom left
+             */
+        
     }
 }
 
