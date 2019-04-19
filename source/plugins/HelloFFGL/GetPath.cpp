@@ -18,6 +18,7 @@ string GetPath::getAssPath()
     string s2 = "/Documents/Resolume Arena 6/Preferences/AdvancedOutput.xml";
     homePath = s1 + s2;
     
+    /*
     char cstr[homePath.length()];
     
     for (int i=0;i<sizeof(cstr);i++)
@@ -27,9 +28,10 @@ string GetPath::getAssPath()
     }
     
     cstr[homePath.size()] = '\0';
+     */
     
     pugi::xml_document ass;
-    pugi::xml_parse_result result = ass.load_file(cstr);
+    pugi::xml_parse_result result = ass.load_file(homePath.c_str());
     
     if (result)
     {

@@ -33,6 +33,7 @@ void InputRect::getInputRect()
     string s3 = AssPath.getAssPath();
     homePath = s1 + s2 + s3;
     
+    /*
     char cstr[homePath.length()];
     
     for (int i=0;i<sizeof(cstr);i++)
@@ -42,9 +43,10 @@ void InputRect::getInputRect()
     }
     
     cstr[homePath.size()] = '\0';
+     */
     
     pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file(cstr);
+    pugi::xml_parse_result result = doc.load_file(homePath.c_str());
     
     compResX = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("width").as_int();
     compResY = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("height").as_int();
