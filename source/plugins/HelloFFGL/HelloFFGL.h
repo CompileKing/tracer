@@ -19,10 +19,10 @@ class FFGLPlugin : public CFreeFrameGLPlugin
 public:
 	FFGLPlugin();
 	~FFGLPlugin();
-    double getXML();
+    
     
     InputRect rect;
-    void reloadXML();
+    
     
     
     

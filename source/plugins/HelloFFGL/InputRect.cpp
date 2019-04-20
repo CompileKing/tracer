@@ -67,15 +67,16 @@ void InputRect::getInputRect()
         isFileLoaded = false;
         
         }
-            
-            /*
-             -0.5f, 0.5f, //top left
-             0.5f, 0.5f, //top right
-             0.5f, -0.5f, //bottom right
-             -0.5f, -0.5f //bottom left
-             */
-        
     
+}
+
+void InputRect::deleteInputRect()
+{
+    for (int i=0;i<vIndex;i++)
+    {
+        xArray[i] = 0.f;
+        yArray[i] = 0.f;
+    }
 }
 
 

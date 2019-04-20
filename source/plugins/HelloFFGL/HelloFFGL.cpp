@@ -78,7 +78,7 @@ FFGLPlugin::~FFGLPlugin()
  Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
-    reloadXML();
+    
     
     glClearColor( 0.f, 0.f, 0.f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
@@ -90,10 +90,11 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
         glLineWidth(aFloat*10);
     }
 
-    //glDisable(GL_LINE_SMOOTH);
+    //anti aliasing
     glEnable(GL_LINE_SMOOTH);
     
-    if (aBool)
+    
+    if (!aBool)
     {
         for (int i=0;i<rect.sIndex;i++)
         {
@@ -121,6 +122,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
         };
         
         //and we draw those corners as a triangle fan
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_FLOAT, 0, verts );
         glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
@@ -132,14 +134,8 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 
 }
 
-void FFGLPlugin::reloadXML()
-{
-    if (aTrigger)
-    {
-        rect.getInputRect();
-        aTrigger = false;
-    }
-}
+
+
 
 /* SetFloatParameter is called by Resolume when you change a slider in the effect */
 FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
@@ -152,8 +148,15 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             break;
         case trigger:
             aTrigger = value;
+            if (aTrigger)
+            {
+                rect.deleteInputRect();
+                rect.getInputRect();
+            }
+            break;
         case test:
             aBool = value;
+            break;
         
     }
     return FF_SUCCESS;

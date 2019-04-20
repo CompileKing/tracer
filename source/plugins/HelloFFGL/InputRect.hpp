@@ -30,6 +30,7 @@ public:
     
     InputRect();
     ~InputRect();
+    void deleteInputRect();
      
     
     int compResX;
