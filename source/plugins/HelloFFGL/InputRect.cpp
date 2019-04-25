@@ -50,7 +50,7 @@ void InputRect::getInputRect()
     homePath1 = s11 + s12;
 #endif
     
-    cout << homePath1 << endl;
+    
     
     pugi::xml_document ass;
     pugi::xml_parse_result
@@ -91,8 +91,7 @@ void InputRect::getInputRect()
     string s23 = assPath;
     homePath2 = s21 + s22 + s23;
     
-    cout << homePath2 << endl;
-    cout << endl;
+    
 #endif
     
     
