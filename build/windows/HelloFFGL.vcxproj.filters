@@ -53,9 +53,6 @@
     <ClCompile Include="..\..\source\lib\ffgl\utilities\utilities.cpp">
       <Filter>Source Files\lib\ffgl\utilities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\plugins\HelloFFGL\GetPath.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\plugins\HelloFFGL\InputRect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\lib\ffgl\utilities\utilities.h">
       <Filter>Source Files\lib\ffgl\utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\plugins\HelloFFGL\GetPath.hpp">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\plugins\HelloFFGL\InputRect.hpp">
       <Filter>Source Files</Filter>
