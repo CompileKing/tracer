@@ -64,8 +64,9 @@ void InputRect::getInputRect()
     
     
     //=====================================================================================
-    //                       retrieved ASS PATH as string assPath
+    //                       dynamically load in current ASS XML
     //=====================================================================================
+    
     
     
 #ifdef _WIN64
@@ -95,6 +96,15 @@ void InputRect::getInputRect()
 #endif
     
     
+    
+    //=====================================================================================
+    //                       create X and Y vector arrays from slices
+    //=====================================================================================
+    
+    
+    
+    
+    
     pugi::xml_document doc;
     pugi::xml_parse_result
     result2 = doc.load_file(homePath2.c_str());
@@ -104,7 +114,6 @@ void InputRect::getInputRect()
     
     if (result2)
     {
-        
         for (pugi::xml_node screen: doc.child("XmlState").child("ScreenSetup").child("screens").children("Screen"))
         {
             if (strncmp (screen.attribute("name").as_string(),"Tracer",6) == 0)

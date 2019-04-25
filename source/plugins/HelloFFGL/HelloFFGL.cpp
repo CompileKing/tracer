@@ -150,7 +150,6 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             aTrigger = value;
             if (aTrigger)
             {
-                
                 rect.getInputRect();
             }
             break;
