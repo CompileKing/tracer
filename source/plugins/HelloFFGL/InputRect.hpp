@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "../../lib/pugixml/pugixml.hpp"
-#include "GetPath.hpp"
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -28,11 +28,7 @@ private:
 public:
     
     
-    InputRect();
-    ~InputRect();
-    void deleteInputRect();
-     
-    
+    string assPath;
     int compResX;
     int compResY;
     
@@ -49,6 +45,9 @@ public:
     
     bool isFileLoaded;
     
+    bool result1;
+    bool result2;
+
 
 };
 
