@@ -4,6 +4,7 @@
 #include "FFGLPluginSDK.h"
 #include "InputRect.hpp"
 #include <math.h>
+#include "FFGLShader.h"
 
 
 using namespace std;
@@ -22,6 +23,11 @@ public:
     
     
     InputRect rect;
+    
+    FFResult InitGL(const FFGLViewportStruct *vp) override;
+    FFResult DeInitGL() override;
+    
+    
     
     
     
@@ -55,6 +61,13 @@ public:
 			return FF_SUCCESS;
 		return FF_FAIL;
 	}
+    
+protected:
+    
+    int m_initResources;
+    FFGLShader m_shader;
+    GLint m_inputTextureLocation;
+    GLint m_BrightnessLocation;
     
     
     

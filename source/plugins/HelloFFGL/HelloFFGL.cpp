@@ -1,6 +1,9 @@
 #include "HelloFFGL.h"
 #include <iostream>
 #include <stdio.h>
+#include "../../lib/ffgl/utilities/utilities.h"
+#include "FFGL.h"
+#include "FFGLLib.h"
 
 using namespace std;
 
@@ -37,6 +40,30 @@ static CFFGLPluginInfo PluginInfo(
  */
 );
 
+static const std::string vertexShaderCode = STRINGIFY(
+                                                      void main()
+{
+    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+    gl_TexCoord[0] = gl_MultiTexCoord0;
+    gl_FrontColor = gl_Color;
+}
+                                                      );
+
+
+static const std::string fragmentShaderCode = STRINGIFY(
+                                                        uniform sampler2D inputTexture;
+                                                        uniform vec3 brightness;
+                                                        void main()
+{
+    vec4 color = texture2D(inputTexture,gl_TexCoord[0].st);
+    if (color.a > 0.0) //unpremultiply
+        color.rgb /= color.a;
+    color.rgb = color.rgb + brightness;
+    color.rgb *= color.a; //premultiply
+    gl_FragColor  =  color;
+}
+                                                        );
+
 FFGLPlugin::FFGLPlugin()
 : CFreeFrameGLPlugin()
 {
@@ -46,7 +73,7 @@ FFGLPlugin::FFGLPlugin()
      FF_TYPE_STANDARD means it's a regular slider
      and 0.5f is it's default value */
     SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.1f);
-    SetParamInfo( trigger, "Reload ASS", FF_TYPE_EVENT, 0.f);
+    SetParamInfo( trigger, "Reload", FF_TYPE_EVENT, 0.f);
     SetParamInfo( test, "test", FF_TYPE_BOOLEAN, 0.f);
     
     
@@ -74,16 +101,116 @@ FFGLPlugin::~FFGLPlugin()
     
 }
 
+FFResult FFGLPlugin::InitGL(const FFGLViewportStruct *vp)
+{
+    
+    m_initResources = 0;
+    
+    
+    //initialize gl shader
+    m_shader.Compile(vertexShaderCode,fragmentShaderCode);
+    
+    //activate our shader
+    m_shader.BindShader();
+    
+    //to assign values to parameters in the shader, we have to lookup
+    //the "location" of each value.. then call one of the glUniform* methods
+    //to assign a value
+    m_inputTextureLocation = m_shader.FindUniform("inputTexture");
+    m_BrightnessLocation = m_shader.FindUniform("brightness");
+    
+    //the 0 means that the 'inputTexture' in
+    //the shader will use the texture bound to GL texture unit 0
+    glUniform1i(m_inputTextureLocation, 0);
+    
+    m_shader.UnbindShader();
+    
+    return FF_SUCCESS;
+}
+
+FFResult FFGLPlugin::DeInitGL()
+{
+    m_shader.FreeGLResources();
+    
+    
+    return FF_SUCCESS;
+}
+
 /*ProcessOpenGL is like the draw() function in processing and openframeworks.
  Everything that happens in ProcessOpenGL happens everytime the plugin renders.*/
 FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 {
     
-    
+    /*
     glClearColor( 0.f, 0.f, 0.f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
+     */
+    
+    if (pGL->numInputTextures<1)
+        return FF_FAIL;
+    
+    if (pGL->inputTextures[0]==NULL)
+        return FF_FAIL;
+    
+    //activate our shader
+    m_shader.BindShader();
+    
+    FFGLTextureStruct &Texture = *(pGL->inputTextures[0]);
+    
+    //get the max s,t that correspond to the
+    //width,height of the used portion of the allocated texture space
+    FFGLTexCoords maxCoords = GetMaxGLTexCoords(Texture);
+    
+    //assign the Brightness
+    
+    /*
+     glUniform3f(m_BrightnessLocation,
+     -1.0f + (m_BrightnessR * 2.0f),
+     -1.0f + (m_BrightnessG * 2.0f),
+     -1.0f + (m_BrightnessB * 2.0f)
+     );
+     
+     */
+    
+    
+    
+    //activate texture unit 1 and bind the input texture
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, Texture.Handle);
+    
+    //draw the quad that will be painted by the shader/textures
+    //note that we are sending texture coordinates to texture unit 1..
+    //the vertex shader and fragment shader refer to this when querying for
+    //texture coordinates of the inputTexture
+    glBegin(GL_QUADS);
+    
+    //lower left
+    glMultiTexCoord2f(GL_TEXTURE0, 0,0);
+    glVertex2f(-1,-1);
+    
+    //upper left
+    glMultiTexCoord2f(GL_TEXTURE0, 0, maxCoords.t);
+    glVertex2f(-1,1);
+    
+    //upper right
+    glMultiTexCoord2f(GL_TEXTURE0, maxCoords.s, maxCoords.t);
+    glVertex2f(1,1);
+    
+    //lower right
+    glMultiTexCoord2f(GL_TEXTURE0, maxCoords.s, 0);
+    glVertex2f(1,-1);
+    glEnd();
+    
+    //unbind the input texture
+    glBindTexture(GL_TEXTURE_2D,0);
+    
+    
+    
+    m_shader.UnbindShader();
     
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    
+    
     
     if (aFloat > 0.1)
     {
@@ -105,6 +232,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
                 rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
                 rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
             };
+            
             glEnableClientState( GL_VERTEX_ARRAY   );
             glVertexPointer( 2, GL_DOUBLE, 0, verts );
             glDrawArrays( GL_LINE_LOOP  , 0, 4 );
@@ -112,7 +240,9 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     }
     
     else
+     
     {
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GLfloat verts[] =
         {
             -0.5f, 0.5f, //top left
@@ -122,7 +252,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
         };
         
         //and we draw those corners as a triangle fan
-        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_FLOAT, 0, verts );
         glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );

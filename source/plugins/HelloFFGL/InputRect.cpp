@@ -108,25 +108,25 @@ void InputRect::getInputRect()
     pugi::xml_parse_result
     result2 = doc.load_file(homePath2.c_str());
     
-    compResX = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("width").as_int();
-    compResY = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("height").as_int();
+    compResX = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("width").as_int();   // get comp width
+    compResY = doc.child("XmlState").child("ScreenSetup").child("CurrentCompositionTextureSize").attribute("height").as_int();  // get comp height
     
-    if (result2)
+    if (result2)    // if the xml is loaded in
     {
-        for (pugi::xml_node screen: doc.child("XmlState").child("ScreenSetup").child("screens").children("Screen"))
+        for (pugi::xml_node screen: doc.child("XmlState").child("ScreenSetup").child("screens").children("Screen")) // for every Screen
         {
-            if (strncmp (screen.attribute("name").as_string(),"Tracer",6) == 0)
+            if (strncmp (screen.attribute("name").as_string(),"Tracer",6) == 0) // for every Screen called Tracer
             {
-                for (pugi::xml_node slice: screen.child("layers").children("Slice"))
+                for (pugi::xml_node slice: screen.child("layers").children("Slice"))    // for every slice
                 {
-                    for (pugi::xml_node value: slice.child("InputRect").children("v"))
+                    for (pugi::xml_node value: slice.child("InputRect").children("v"))  // for every v child
                     {
-                        xArray[vIndex] =  (value.attribute("x").as_double() / compResX) * 2. - 1.;
-                        yArray[vIndex] =  (value.attribute("y").as_double() / compResY) * 2. - 1.;
+                        xArray[vIndex] =  (value.attribute("x").as_double() / compResX) * 2. - 1.;  // get x attribute and fill xArray and normalise with comp width
+                        yArray[vIndex] =  (value.attribute("y").as_double() / compResY) * 2. - 1.;  // get y attribute and fill yArray and normalise with comp height
                         
-                        vIndex++;
+                        vIndex++;   // vector index increment
                     }
-                    sIndex++;
+                    sIndex++;    // screen index increment
                 }
             }
         }
