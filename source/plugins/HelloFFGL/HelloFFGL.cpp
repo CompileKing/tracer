@@ -11,7 +11,7 @@ using namespace std;
 //this is handy so we don't have to remember which index each param has
 #define lineWidthParam 0
 #define trigger 1
-#define test 2
+#define bgToggle 2
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,13 +74,13 @@ FFGLPlugin::FFGLPlugin()
      and 0.5f is it's default value */
     SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.1f);
     SetParamInfo( trigger, "Reload", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( test, "test", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( bgToggle, "view Back texture", FF_TYPE_BOOLEAN, 0.f);
     
     
     
     //because we set our param to be 0.5f by default, it makes sense that our float variable also starts off at 0.5f
     aFloat = 0.1f;
-    aBool = 0;
+    aBool = false;
     
     
     
@@ -203,12 +203,12 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     //unbind the input texture
     glBindTexture(GL_TEXTURE_2D,0);
-    
-    
-    
+
     m_shader.UnbindShader();
     
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    
+    
+    
     
     
     
@@ -220,9 +220,30 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     //anti aliasing
     glEnable(GL_LINE_SMOOTH);
     
+    // create verts array from input x & y array pointers
+    
     
     if (!aBool)
     {
+        
+        GLfloat verts[] =
+        {
+            -1.f, 1.f, //top left
+            1.f, 1.f, //top right
+            1.f, -1.f, //bottom right
+            -1.f, -1.f //bottom left
+        };
+        
+        //and we draw those corners as a triangle fan
+        glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 2, GL_FLOAT, 0, verts );
+        glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
+    }
+        
+
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    
         for (int i=0;i<rect.sIndex;i++)
         {
             GLdouble verts[] =
@@ -237,29 +258,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
             glVertexPointer( 2, GL_DOUBLE, 0, verts );
             glDrawArrays( GL_LINE_LOOP  , 0, 4 );
         }
-    }
-    
-    else
-     
-    {
-        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        GLfloat verts[] =
-        {
-            -0.5f, 0.5f, //top left
-            0.5f, 0.5f, //top right
-            0.5f, -0.5f, //bottom right
-            -0.5f, -0.5f //bottom left
-        };
-        
-        //and we draw those corners as a triangle fan
-        
-        glEnableClientState( GL_VERTEX_ARRAY );
-        glVertexPointer( 2, GL_FLOAT, 0, verts );
-        glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
-    }
-    
-    
-    
+
     return FF_SUCCESS;
 
 }
@@ -283,7 +282,7 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
                 rect.getInputRect();
             }
             break;
-        case test:
+        case bgToggle:
             aBool = value;
             break;
         

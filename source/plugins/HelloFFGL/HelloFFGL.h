@@ -44,11 +44,7 @@ public:
 
 	//this is a float that will be set by Resolume, and we can use it to change stuff in our plugin
 	//we're going to link the value of this float to the value of the slider in Resolume
-	float aFloat;
-    float xfloat;
-    bool aBool;
-    bool aTrigger;
-    int lineWidth;
+	
     
     
 
@@ -63,6 +59,13 @@ public:
 	}
     
 protected:
+    
+    float aFloat;
+    float xfloat;
+    bool aBool;
+    bool aTrigger;
+    int lineWidth;
+    
     
     int m_initResources;
     FFGLShader m_shader;
