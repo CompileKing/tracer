@@ -63,19 +63,14 @@ protected:
     float aFloat;
     float xfloat;
     bool aBool;
+    bool aMaskBool;
     bool aTrigger;
     int lineWidth;
-    
-    
+
     int m_initResources;
     FFGLShader m_shader;
     GLint m_inputTextureLocation;
     GLint m_BrightnessLocation;
-    
-    
-    
-    
-    
     
     
 };

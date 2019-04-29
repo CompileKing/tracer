@@ -12,6 +12,7 @@ using namespace std;
 #define lineWidthParam 0
 #define trigger 1
 #define bgToggle 2
+#define maskToggle 3
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,13 +75,15 @@ FFGLPlugin::FFGLPlugin()
      and 0.5f is it's default value */
     SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.1f);
     SetParamInfo( trigger, "Reload", FF_TYPE_EVENT, 0.f);
-    SetParamInfo( bgToggle, "view Back texture", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( bgToggle, "See Through", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo( maskToggle, "Draw Mask", FF_TYPE_BOOLEAN, 0.f);
     
     
     
     //because we set our param to be 0.5f by default, it makes sense that our float variable also starts off at 0.5f
     aFloat = 0.1f;
     aBool = false;
+    aMaskBool = false;
     
     
     
@@ -182,6 +185,8 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     //note that we are sending texture coordinates to texture unit 1..
     //the vertex shader and fragment shader refer to this when querying for
     //texture coordinates of the inputTexture
+    
+    
     glBegin(GL_QUADS);
     
     //lower left
@@ -209,9 +214,6 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     
     
-    
-    
-    
     if (aFloat > 0.1)
     {
         glLineWidth(aFloat*10);
@@ -225,7 +227,6 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     if (!aBool)
     {
-        
         GLfloat verts[] =
         {
             -1.f, 1.f, //top left
@@ -234,16 +235,16 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
             -1.f, -1.f //bottom left
         };
         
-        //and we draw those corners as a triangle fan
         glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_FLOAT, 0, verts );
         glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
     }
-        
-
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     
+    
+    
+    if (aMaskBool)
+    {
         for (int i=0;i<rect.sIndex;i++)
         {
             GLdouble verts[] =
@@ -253,11 +254,38 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
                 rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
                 rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
             };
-            
+            glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+            glEnableClientState( GL_VERTEX_ARRAY   );
+            glVertexPointer( 2, GL_DOUBLE, 0, verts );
+            glDrawArrays( GL_TRIANGLE_FAN  , 0, 4 );
+        }
+    }
+    else
+    {
+        for (int i=0;i<rect.sIndex;i++)
+        {
+            GLdouble verts[] =
+            {
+                rect.xArrayPtr[(4*i)],  rect.yArrayPtr[(4*i)],      //top left
+                rect.xArrayPtr[(4*i+1)],rect.yArrayPtr[(4*i+1)],    //top right
+                rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
+                rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
+            };
+            glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
             glEnableClientState( GL_VERTEX_ARRAY   );
             glVertexPointer( 2, GL_DOUBLE, 0, verts );
             glDrawArrays( GL_LINE_LOOP  , 0, 4 );
         }
+    }
+    
+
+    
+    
+     
+     
+    
+    
+    
 
     return FF_SUCCESS;
 
@@ -285,6 +313,8 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case bgToggle:
             aBool = value;
             break;
+        case maskToggle:
+            aMaskBool = value;
         
     }
     return FF_SUCCESS;
