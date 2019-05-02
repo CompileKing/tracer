@@ -66,7 +66,10 @@ protected:
     bool aMaskBool;
     bool aTrigger;
     bool aBwBool;
+    bool aInvertLineBool;
     int lineWidth;
+    
+    
 
     int m_initResources;
     FFGLShader m_shader;

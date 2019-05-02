@@ -10,10 +10,11 @@ using namespace std;
 //here we define the word 'lineWidthParam' to equal zero
 //this is handy so we don't have to remember which index each param has
 #define lineWidthParam 0
-#define trigger 1
+#define trigger 5
 #define bgToggle 2
 #define maskToggle 3
 #define BwToggle 4
+#define invertLine 1
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +76,7 @@ FFGLPlugin::FFGLPlugin()
      FF_TYPE_STANDARD means it's a regular slider
      and 0.5f is it's default value */
     SetParamInfo( lineWidthParam, "Line Width", FF_TYPE_STANDARD, 0.1f);
+    SetParamInfo(invertLine, "Invert Line", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( trigger, "Reload", FF_TYPE_EVENT, 0.f);
     SetParamInfo( bgToggle, "See Through", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( maskToggle, "Draw Mask", FF_TYPE_BOOLEAN, 0.f);
@@ -87,6 +89,7 @@ FFGLPlugin::FFGLPlugin()
     aBool = false;
     aMaskBool = false;
     aBwBool = false;
+    aInvertLineBool = false;
     
     
     /*This will make sure that the plugin gets recognised as an EFFECT on both OSX and Windows.
@@ -208,7 +211,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     //unbind the input texture
     glBindTexture(GL_TEXTURE_2D,0);
-
+    
     m_shader.UnbindShader();
     
     
@@ -218,7 +221,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     {
         glLineWidth(aFloat*10);
     }
-
+    
     //anti aliasing
     glEnable(GL_LINE_SMOOTH);
     
@@ -303,16 +306,25 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
                 rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
                 rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
             };
-            glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+            if (aInvertLineBool)
+            {
+                
+                glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+            }
+            else
+            {
+                glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+            }
+            
             glEnableClientState( GL_VERTEX_ARRAY   );
             glVertexPointer( 2, GL_DOUBLE, 0, verts );
             glDrawArrays( GL_LINE_LOOP  , 0, 4 );
         }
     }
     
-
+    
     return FF_SUCCESS;
-
+    
 }
 
 
@@ -343,7 +355,10 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
         case BwToggle:
             aBwBool = value;
             break;
-        
+        case invertLine:
+            aInvertLineBool = value;
+            break;
+            
     }
     return FF_SUCCESS;
 }
