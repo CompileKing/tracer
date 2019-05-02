@@ -28,7 +28,7 @@ static CFFGLPluginInfo PluginInfo(
         1,									// Plugin major version number
         000,								// Plugin minor version number
         FF_EFFECT,							// Plugin type
-        "Creates an outline on your slices",			// Plugin description
+        "Creates an outline on your input slices",			// Plugin description
         "Sem Shimla // Pixel Clone"			// About
 
 /*The important bits here are:
@@ -174,9 +174,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
      );
      
      */
-    
-    
-    
+
     //activate texture unit 1 and bind the input texture
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Texture.Handle);
@@ -245,8 +243,23 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     if (aMaskBool)
     {
+        GLfloat backVerts[] =
+        {
+            -1.f, 1.f, //top left
+            1.f, 1.f, //top right
+            1.f, -1.f, //bottom right
+            -1.f, -1.f //bottom left
+        };
+        
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 2, GL_FLOAT, 0, backVerts );
+        glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
+        
         for (int i=0;i<rect.sIndex;i++)
         {
+            
+            
             GLdouble verts[] =
             {
                 rect.xArrayPtr[(4*i)],  rect.yArrayPtr[(4*i)],      //top left
@@ -254,7 +267,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
                 rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
                 rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
             };
-            glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+            glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
             glEnableClientState( GL_VERTEX_ARRAY   );
             glVertexPointer( 2, GL_DOUBLE, 0, verts );
             glDrawArrays( GL_TRIANGLE_FAN  , 0, 4 );
@@ -264,6 +277,8 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     {
         for (int i=0;i<rect.sIndex;i++)
         {
+            
+            
             GLdouble verts[] =
             {
                 rect.xArrayPtr[(4*i)],  rect.yArrayPtr[(4*i)],      //top left
@@ -277,14 +292,6 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
             glDrawArrays( GL_LINE_LOOP  , 0, 4 );
         }
     }
-    
-
-    
-    
-     
-     
-    
-    
     
 
     return FF_SUCCESS;
