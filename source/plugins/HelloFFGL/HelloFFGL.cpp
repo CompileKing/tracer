@@ -13,6 +13,7 @@ using namespace std;
 #define trigger 1
 #define bgToggle 2
 #define maskToggle 3
+#define BwToggle 4
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,6 +78,7 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( trigger, "Reload", FF_TYPE_EVENT, 0.f);
     SetParamInfo( bgToggle, "See Through", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( maskToggle, "Draw Mask", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo(BwToggle, "BW Toggle", FF_TYPE_BOOLEAN, 0.f);
     
     
     
@@ -84,7 +86,7 @@ FFGLPlugin::FFGLPlugin()
     aFloat = 0.1f;
     aBool = false;
     aMaskBool = false;
-    
+    aBwBool = false;
     
     
     /*This will make sure that the plugin gets recognised as an EFFECT on both OSX and Windows.
@@ -242,7 +244,7 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
     
     
     if (aMaskBool)
-    {
+    {   // draw mask
         GLfloat backVerts[] =
         {
             -1.f, 1.f, //top left
@@ -251,7 +253,14 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
             -1.f, -1.f //bottom left
         };
         
-        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        if (aBwBool)
+        {
+            glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        }
+        else
+        {
+            glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+        }
         glEnableClientState( GL_VERTEX_ARRAY );
         glVertexPointer( 2, GL_FLOAT, 0, backVerts );
         glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
@@ -267,14 +276,22 @@ FFResult FFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL)
                 rect.xArrayPtr[(4*i+2)],rect.yArrayPtr[(4*i+2)],    //bottom right
                 rect.xArrayPtr[(4*i+3)],rect.yArrayPtr[(4*i+3)],    //bottom left
             };
-            glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+            
+            if (aBwBool)
+            {
+                glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+            }
+            else
+            {
+                glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+            }
             glEnableClientState( GL_VERTEX_ARRAY   );
             glVertexPointer( 2, GL_DOUBLE, 0, verts );
             glDrawArrays( GL_TRIANGLE_FAN  , 0, 4 );
         }
     }
     else
-    {
+    {   // draw lines
         for (int i=0;i<rect.sIndex;i++)
         {
             
@@ -322,6 +339,10 @@ FFResult FFGLPlugin::SetFloatParameter(unsigned int index, float value)
             break;
         case maskToggle:
             aMaskBool = value;
+            break;
+        case BwToggle:
+            aBwBool = value;
+            break;
         
     }
     return FF_SUCCESS;

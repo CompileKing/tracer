@@ -65,6 +65,7 @@ protected:
     bool aBool;
     bool aMaskBool;
     bool aTrigger;
+    bool aBwBool;
     int lineWidth;
 
     int m_initResources;
