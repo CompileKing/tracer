@@ -78,7 +78,7 @@ FFGLPlugin::FFGLPlugin()
     SetParamInfo( trigger, "Reload", FF_TYPE_EVENT, 0.f);
     SetParamInfo( bgToggle, "See Through", FF_TYPE_BOOLEAN, 0.f);
     SetParamInfo( maskToggle, "Draw Mask", FF_TYPE_BOOLEAN, 0.f);
-    SetParamInfo(BwToggle, "BW Toggle", FF_TYPE_BOOLEAN, 0.f);
+    SetParamInfo(BwToggle, "Invert Mask", FF_TYPE_BOOLEAN, 0.f);
     
     
     
