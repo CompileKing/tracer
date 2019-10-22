@@ -10,7 +10,7 @@
 #define InputRect_hpp
 
 #include <stdio.h>
-#include "../../lib/pugixml/pugixml.hpp"
+#include "../../pugixml/pugixml.hpp"
 #include <iostream>
 #include <string>
 
